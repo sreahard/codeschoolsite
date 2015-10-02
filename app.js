@@ -1,0 +1,1 @@
+newClick.clickMe();
