@@ -12,8 +12,7 @@ function AddClicks(clicks) {
 	this.clicks = clicks;
  }
 AddClicks.prototype.clickMe = function() {
-        clicks += 1;
-        document.getElementById("clicks").innerHTML = clicks; 
+        this.clicks += 1;
+        document.getElementById("clicks").innerHTML = this.clicks; 
  }
 
-module.exports = AddClicks;
