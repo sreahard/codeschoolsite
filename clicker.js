@@ -16,4 +16,4 @@ AddClicks.prototype.clickMe = function() {
         document.getElementById("clicks").innerHTML = clicks; 
  }
 
-var newClick = new AddClicks(0);
+module.exports = AddClicks;
