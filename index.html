@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	 <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.5.1.js"></script>
 
 </head>
 <body>
@@ -75,11 +76,10 @@
 			<h1  id="contact">Tweet at me!</h1><br>
 <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">@</span>
-  <input type="text" class="form-control" placeholder="sreahard" aria-describedby="basic-addon1" style="width: 75% ">&nbsp;  <button ><a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet?text=@sreahard" target="new" 
-  data-size="large">
+  <input id="btnTweet" type="text" class="form-control" placeholder="sreahard" aria-describedby="basic-addon1" style="width: 75% ">&nbsp;  <button ><a class="twitter-share-button" id="btnTweet">
  Tweet</a> </button>
 </div>
+
 
 				<div class="footer">
 					<p>
@@ -101,6 +101,7 @@
 
 			<script src="clicker.js"></script>
 			<script src="app.js"></script>
+			<script src="tweet.js"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		</body>

@@ -58,7 +58,7 @@ a:active {
 
 
 }
-.tweet {
-  width: 75%;
-  padding-right: 15px;
-}
+ #btnTweet {
+ width: 159px;
+ height: 38px;
+ }
