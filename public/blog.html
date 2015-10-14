@@ -81,10 +81,19 @@
                             <h4>Leave a Comment:</h4>
                             <form action="http://localhost:4000/api/v1/blogComment" method="POST" role="form">
                                 <div class="form-group">
-                                    <textarea class="form-control" name="name" placeholder="Tell me what you think!" rows="3"></textarea>
+                                    <textarea class="form-control" name="content" placeholder="Tell me what you think!" rows="3"></textarea>
                                 </div>
+                                <h4>Name:</h4>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="name" placeholder="Tell me who you are!" rows="1"></textarea>
+                                </div>
+
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
+                        </div>
+                        <div class="well">
+                        <h4>Comments</h4>
+
                         </div>
 
                     </div>

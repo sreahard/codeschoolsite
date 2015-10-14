@@ -8,10 +8,8 @@ var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var fs = require('fs');
-var mongoose   = require('mongoose');
-mongoose.connect('mongodb://localhost/blogComment'); // connect to our database
-
-var Comment = require('./public/js/comment');
+var db = require('./models/dbs')  //mongoose is now in dbs.js
+var Comment = require('./models/comment');
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -48,15 +46,16 @@ router.route('/blogComment')
     .post(function(req, res) {
 
         var comment = new Comment();      // create a new instance of the comment model
-        comment.name = req.body.name;  // set the blogComment name (comes from the request)
-
+        comment.name = req.body.name;
+        comment.content = req.body.content;  // set the blogComment name (comes from the request)
+        console.log(comment + "comment created!")
         // save the comment and check for errors
         comment.save(function(err) {
         	if (err)
         		res.send(err);
         	res.redirect('/blog.html');
-        	res.json({ message: 'comment ' + comment.name + ' created!' });
-
+        	// res.json({ message: 'comment ' + comment.name + ' created!' });
+        	res.json(comment)
         });
         
     }) // removed semicolon to link get function
@@ -91,7 +90,8 @@ router.route('/blogComment/:comment_id')
             if (err)
                 res.send(err);
 
-            comment.name = req.body.name;  // update the blogComment info
+            comment.name = req.body.name;
+            comment.content = req.body.content;  // update the blogComment info
 
             // save the comment
             comment.save(function(err) {
