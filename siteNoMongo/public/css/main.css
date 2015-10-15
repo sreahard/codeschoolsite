@@ -1,0 +1,64 @@
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+body {
+    font-family: "Lato",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+h1 {
+    font-family: "Oswald",Helvetica,Arial,sans-serif;
+    font-size: 40px;
+    line-height: 1.15;
+}
+h2 {
+    font-family: "Oswald",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.15;
+}
+h3 {
+    font-family: "Oswald",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: .15;
+}
+
+a {
+  color: rgb(217,29, 29);
+}
+
+a:hover {
+  color: rgba(217, 29, 29, 0.5);
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgb(217,40, 40);
+  text-decoration: none;
+}
+a:active {
+  color: rgb(217,40, 40);
+  text-decoration: none;
+}
+
+
+.logo {
+   width: 25%;
+   height: auto;
+   float:left;
+   padding: 10px;
+}
+.image-responsive{
+      width: 50%;
+   height: auto;
+   float:left;
+   padding: 30px;
+
+
+}
+ #btnTweet {
+ width: 159px;
+ height: 38px;
+ }
