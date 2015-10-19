@@ -9,7 +9,9 @@ router.route('/')
 
   .get(function(req, res) {
     console.log("getting?" + req.url)
-    mongoose.model('Blog').find({}, function(err, blogPosts){
+    var Blog = mongoose.model('Blog');
+    console.log(Blog)
+    Blog.find({}, function(err, blogPosts){
      if(err){
        return console.log(err);
      } else {

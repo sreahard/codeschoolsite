@@ -5,7 +5,7 @@ var blogSchema = new Schema({
   title:  String,
   author: String,
   body:   String,
-  date: { type: Date, default: '12/10/1990' },
+  date: { type: Date, default: Date.now }
   });
 
 module.exports = mongoose.model('Blog', blogSchema);
