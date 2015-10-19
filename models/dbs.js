@@ -1,7 +1,11 @@
 var mongoose = require('mongoose');
+var uriUtil = require('mongodb-uri');
 
-mongoose.connect('mongodb://localhost/blogPosts');
+var options = {
+    server:  { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+    replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
+};  
+var mongodbUri = process.env.MONGOLAB_URI || "mongodb://localhost";
+var mongooseUri = uriUtil.formatMongoose(mongodbUri);
 
- // connect to our database
-
-module.exports = mongoose;
+mongoose.connect(mongooseUri, options);
