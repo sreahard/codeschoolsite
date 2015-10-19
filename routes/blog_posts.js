@@ -8,6 +8,7 @@ router.use(bodyParser.urlencoded({ extended: true }))
 router.route('/')
 
   .get(function(req, res) {
+    console.log("getting?" + req.url)
     mongoose.model('Blog').find({}, function(err, blogPosts){
      if(err){
        return console.log(err);
