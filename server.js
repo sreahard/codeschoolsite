@@ -3,36 +3,26 @@ var path = require('path');
 var http = require('http');
 var fs = require('fs');
 var bodyParser = require('body-parser');
+var db = require('./models/dbs');
+var blogModel = require('./models/blog');
+
+
 
 var app = express();
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.set('port', (process.env.PORT || 4000));
+
+var blogRoutes = require('./routes/blog_posts');
 
 app.use(express.static('public'));
 
+app.use('/api/v1/blogPosts', blogRoutes);
+
 app.get('/', function(req, res){
 	res.readFile('index.html')
-})
-
-
-app.post('/api/form', function(req, res) {
-	var newComment = req.body.newComment;
-	var myData = 'Comment: ' + newComment;
-	fs.appendFile('form.json', JSON.stringify(myData), function(err)  {
-		if(err){
-			console.log(err)
-		} else {
-			console.log(JSON.stringify(myData) + ' sucessfully saved');
-			res.redirect('/blog.html');
-		}
-	});
-});
-
-app.get('/api/hello', function(req, res) {
-  res.send("Yo home slice! What's shakin'?")
 });
 
 
-
-
-app.listen(3000);
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});

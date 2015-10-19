@@ -45,13 +45,12 @@ a:active {
 
 
 .logo {
-   width: 25%;
-   height: auto;
-   float:left;
-   padding: 10px;
+  height: auto;
+  float:left;
+  padding: 10px;
 }
-.image-responsive{
-      width: 50%;
+.image-inpost{
+   width: 50%;
    height: auto;
    float:left;
    padding: 30px;

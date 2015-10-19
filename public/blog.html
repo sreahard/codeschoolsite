@@ -1,67 +1,74 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
 
 <head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta http-equiv="description" content="page description" />
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="description" content="page description" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>I Code Good and Do Other Stuff Good Too!</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="./css/main.css">
-	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-	<link rel='shortcut icon' href='./images/favicon.ico' type='image/x-icon'/ >
-	<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.5.1.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>I Code Good and Do Other Stuff Good Too!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.5.1.js"></script>
 
 </head>
 <body>
 
-	<div class="container">
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<a classs="navbar-brand" href="index.html"><img src="./images/logo.png" class="logo" alt="Reahard Design"></a>
-				<ul class="nav navbar-nav">
-					<li><a href="blog.html"><h3>Blog</h3></a></li>
-					<li><a href="index.html"><h3>About</h3></a></li>
-					<li><a href="#contact"><h3>Contact</h3></a></li>
-				</ul>
-			</div>
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+            <div class="navbar-header">
+                <a classs="navbar-brand" href="index.html"><img src="./images/logosm.png" class="logo" alt="Reahard Design"></a>
+                <button type='button' class='navbar-toggle' 
+                data-toggle='collapse'
+                data-target='.navbar-collapse'>
+                <span class='sr-only'>Toggle navigation</span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                    <span class='icon-bar'></span>
+                </button>
+                </div>
+                <ul class="nav navbar-nav collapse navbar-collapse">
+                    <li><a href="blog.html"><h3>Blog</h3></a></li>
+                    <li><a href="index.html"><h3>About</h3></a></li>
+                    <li><a href="contact.html"><h3>Contact</h3></a></li>
+                </ul>
+            </div>
 
 
-		</nav>
+        </nav>
 		<div class="container-fluid">
-            <div class="container">
 
                 <div class="row">
 
                     <div class="col-lg-8">
 
                         <!-- Blog Post -->
-
+                        <div id="blog-list"></div>
                         <!-- Title -->
-                        <h1>How I am learning to code good and do other stuff good too</h1>
+<!--                         <h1>How I am learning to code good and do other stuff good too</h1>
 
-                        <!-- Author -->
                         <p class="lead">
                             by <a href="#">Suzie Reahard [rear-duh]</a>
                         </p>
 
                         <hr>
 
-                        <!-- Date/Time -->
                         <p><span class="glyphicon glyphicon-time"></span> Posted on October 06, 2015</p>
 
                         <hr>
 
-                        <!-- Preview Image -->
                         <img class="img-responsive" src="./images/blogpost1.jpg" alt="">
 
                         <hr>
 
-                        <!-- Post Content -->
                         <p>Now, do you wanna steer, or are you too old to sit on your Pop's lap and drive? Look at us, crying like a couple of girls on the last day of camp. So Ann, the question is, do you want a man or a boy? I know how I would answer.</p>
 
                         <p>Ah coodle doodle doo, ah coodle doodle doo. No. I was ashamed to be seen with you. I like being with you.</p>
@@ -73,7 +80,7 @@
                         <p>I mean, it's one banana, Michael. What could it cost, ten dollars? Boy, I sure feel like a Mary without a Peter and a Paul. And I wouldn't just lie there, if that's what you're thinking. That's not what I WAS thinking. Make love in your *own* hand, Mother! Monday morning. COME ON! I could use a leather jacket for when I'm on my hog and have to go into a controlled slide. Happy. Did you enjoy your lunch, mom? You drank it fast enough.</p>
 
                         <hr>
-
+ -->
                         <!-- Blog Comments -->
 
                         <!-- Comments Form -->
@@ -142,30 +149,29 @@
 
                 </div>
                 <h1  id="contact">Tweet at me!</h1><br>
-<div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">@</span>
-  <input id="btnTweet" type="text" class="form-control" placeholder="sreahard" aria-describedby="basic-addon1" style="width: 100% ">
-</div>
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">@</span>
+                  <input id="btnTweet" type="text" class="form-control" placeholder="sreahard" aria-describedby="basic-addon1" style="width: 100% ">
+              </div>
 
 
-                <div class="footer">
-                 <p>
+              <div class="footer">
+               <p>
                   <ul class="list-inline">
-                   <li><a href="https://play.spotify.com/browse" target="new"><i class="glyphicon glyphicon-headphones"></i> The Greatest Hits</a></li>
-                   <li><a href="https://instagram.com/sreahard/" target="new"><i class="glyphicon glyphicon-camera"></i> Cool Photos</a></li>
-                   <li><a href="mailto:susan@reahard.org?Subject=I%20found%20your%20Code%20School%20Site!"><i class="glyphicon glyphicon-envelope"></i> Contact</a></li>
-                   <li><button onclick="newClick.clickMe()" class="btn btn-danger">Dig Me?</button></li>
-                   <li>This many people already do!&nbsp; <span class="badge" id="clicks">0</span>
-                   </ul>
-               </p>
-           </div>
+                     <li><a href="https://play.spotify.com/browse" target="new"><i class="glyphicon glyphicon-headphones"></i> The Greatest Hits</a></li>
+                     <li><a href="https://instagram.com/sreahard/" target="new"><i class="glyphicon glyphicon-camera"></i> Cool Photos</a></li>
+                     <li><a href="mailto:susan@reahard.org?Subject=I%20found%20your%20Code%20School%20Site!"><i class="glyphicon glyphicon-envelope"></i> Contact</a></li>
+                     <li><button onclick="newClick.clickMe()" class="btn btn-danger">Dig Me?</button></li>
+                     <li>This many people already do!&nbsp; <span class="badge" id="clicks">0</span>
+                     </ul>
+                 </p>
 
-       </div> 
-   </div> 
+         </div> 
+     </div> 
 
-   <script src="./js/clicker.js"></script>
-   <script src="./js/app.js"></script>
-   <script src="./js/tweet.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</body>
+     <script src="./js/clicker.js"></script>
+     <script src="./js/app.js"></script>
+     <script src="./js/tweet.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+ </body>

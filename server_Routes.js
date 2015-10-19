@@ -10,6 +10,8 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 var db = require('./models/dbs')  //mongoose is now in dbs.js
 var Comment = require('./models/comment');
+var blogPost = require('./models/blog');
+
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -17,6 +19,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(express.static('public'));
+var validBlogs = [];
+
+function filterByTitle(obj) {
+ if ('title' in obj && typeof(obj.title) === 'string') {
+   validBlogs.push(obj);
+   return true;
+ } else {
+   return false;
+ }
+};
+
 
 var port = process.env.PORT || 4000;        // set our port
 
@@ -33,14 +46,43 @@ router.use(function(req, res, next) {
 
 // test route to make sure everything is working (accessed at GET http://localhost:4000/api)
 router.get('/', function(req, res) {
-	res.readFile('index.html')
+	res.readFile('blog.html')
 });
 
 // more routes for our API will happen here
 
 // on routes that end in /blogComment
 // ----------------------------------------------------
-router.route('/blogComment')
+router.route('/blogPost')
+
+    // create a comment (accessed at POST http://localhost:4000/api/blogComment)
+    .post(function(req, res) {
+
+        var blog = new blogPost();      // create a new instance of the comment model
+        blog.title = req.body.title;
+        blog.author = req.body.author;
+        blog.body = req.body.body;  // set the blogComment name (comes from the request)
+        console.log("New post created!")
+        // save the comment and check for errors
+        blog.save(function(err) {
+        	if (err)
+        		res.send(err);
+        	res.redirect('/blog.html');
+        	// res.json({ message: 'comment ' + comment.name + ' created!' });
+        	res.json(blog)
+        });
+        
+    }) // removed semicolon to link get function
+    // get all the blogComment (accessed at GET http://localhost:4000/api/blogComment)
+    .get(function(req, res) {
+    	blogPost.find(function(err, blogPost) {
+    		if (err)
+    			res.send(err);
+
+    		res.json(blogPost);
+    	});
+    });
+    router.route('/blogComment')
 
     // create a comment (accessed at POST http://localhost:4000/api/blogComment)
     .post(function(req, res) {
@@ -51,26 +93,72 @@ router.route('/blogComment')
         console.log(comment + "comment created!")
         // save the comment and check for errors
         comment.save(function(err) {
-        	if (err)
-        		res.send(err);
-        	res.redirect('/blog.html');
-        	// res.json({ message: 'comment ' + comment.name + ' created!' });
-        	res.json(comment)
+            if (err)
+                res.send(err);
+            res.redirect('/blog.html');
+            // res.json({ message: 'comment ' + comment.name + ' created!' });
+            res.json(comment)
         });
         
     }) // removed semicolon to link get function
     // get all the blogComment (accessed at GET http://localhost:4000/api/blogComment)
     .get(function(req, res) {
-    	Comment.find(function(err, blogComment) {
-    		if (err)
-    			res.send(err);
+        Comment.find(function(err, blogComment) {
+            if (err)
+                res.send(err);
 
-    		res.json(blogComment);
-    	});
+            res.json(blogComment);
+        });
     });
+
 
     // on routes that end in /blogComment/:comment_id
 // ----------------------------------------------------
+router.route('/blogPost/:blog_id')
+
+    // get the comment with that id (accessed at GET http://localhost:4000/api/blogComment/:comment_id)
+    .get(function(req, res) {
+        blogPost.findById(req.params.blog_id, function(err, blog) {
+            if (err)
+                res.send(err);
+            res.json(blog);
+        });
+    })
+// update the comment with this id (accessed at PUT http://localhost:4000/api/blogComment/:comment_id)
+    .put(function(req, res) {
+
+        // use our comment model to find the comment we want
+        blogPost.findById(req.params.blog_id, function(err, blog) {
+
+            if (err)
+                res.send(err);
+
+        blog.title = req.body.title;
+        blog.author = req.body.author;
+        blog.body = req.body.body;  // set the blogComment name (comes from the request)
+
+            // save the comment
+            blog.save(function(err) {
+                if (err)
+                    res.send(err);
+
+                res.json({ message: 'Blog post updated!' });
+            });
+
+        });
+    })
+    
+    // delete the comment with this id (accessed at DELETE http://localhost:4000/api/blogComment/:comment_id)
+    .delete(function(req, res) {
+        blogPost.remove({
+            _id: req.params.blog_id
+        }, function(err, blog) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'Blog successfully deleted' });
+        });
+    });
 router.route('/blogComment/:comment_id')
 
     // get the comment with that id (accessed at GET http://localhost:4000/api/blogComment/:comment_id)
@@ -115,7 +203,6 @@ router.route('/blogComment/:comment_id')
             res.json({ message: 'Successfully deleted' });
         });
     });
-
 
 
 // REGISTER OUR ROUTES -------------------------------

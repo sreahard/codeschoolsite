@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="description" content="page description" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>I Code Good and Do Other Stuff Good Too!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.5.1.js"></script>
+    <script src="//cdn.ckeditor.com/4.5.4/full/ckeditor.js"></script>
+
+</head>
+<body>
+   <div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a classs="navbar-brand" href="index.html"><img src="./images/logosm.png" class="logo" alt="Reahard Design"></a>
+                <button type='button' class='navbar-toggle' 
+                data-toggle='collapse'
+                data-target='.navbar-collapse'>
+                <span class='sr-only'>Toggle navigation</span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+            </button>
+        </div>
+        <ul class="nav navbar-nav collapse navbar-collapse">
+            <li><a href="blog.html"><h3>Blog</h3></a></li>
+            <li><a href="index.html"><h3>About</h3></a></li>
+            <li><a href="contact.html"><h3>Contact</h3></a></li>
+        </ul>
+    </div>
+
+
+</nav>
+<div class="container-fluid">
+    <div class="container">
+        <form action="http://localhost:4000/api/v1/blogPosts" method="POST" role="form">
+        <legend>Where I can write my blogs</legend>
+
+            <div class="form-group">
+                <label for="">Title</label>
+                <input type="text" class="form-control" name="title" placeholder="Blog Title">
+            </div>
+            <div class="form-group">
+                <label for="">Written by</label>
+                <input type="text" class="form-control" name="author" placeholder="Author">
+            </div>
+            <div class="form-group">
+                <label for="">Content</label>
+                <textarea type="text" class="form-control" name="body" placeholder="All of your important thoughts" rows="15"></textarea>
+                <script type="text/javascript">
+                    CKEDITOR.replace( 'body' );
+                </script>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+     <script src="./js/clicker.js"></script>
+     <script src="./js/app.js"></script>
+     <script src="./js/tweet.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+ </body>
+</body>
