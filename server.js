@@ -16,7 +16,7 @@ var blogRoutes = require('./routes/blog_posts');
 
 app.use(express.static('public'));
 
-app.use('/api/v1/blogPosts', blogRoutes);
+app.use('api/v1/blogPosts', blogRoutes);
 
 app.get('/', function(req, res){
 	res.readFile('index.html')
