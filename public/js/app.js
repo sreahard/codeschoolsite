@@ -16,6 +16,24 @@
 	});
 })();
 
+(function(){
+	$.getJSON( "/api/v1/blogComments", function( data ) {
+		var items = [];
+		$.each( data, function( key, val ) {
+			console.log(key, val)
+			console.log(val.title);
+			console.log(val.body);
+			console.log(val.author);
+			console.log(val.date);
+			items.push( "<article><h4>" + val.name + "</h4>" + "<p>" + val.comment + "</p><hr>");
+		});
+		$( "<div/>", {
+			"class": "my-new-comments",
+			html: items.join( "" )
+		}).appendTo( "#blog-comments" );
+	});
+})();
+
 
 var newClick = new AddClicks(0);
 

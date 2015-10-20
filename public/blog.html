@@ -86,9 +86,9 @@
                         <!-- Comments Form -->
                         <div class="well">
                             <h4>Leave a Comment:</h4>
-                            <form action="/api/v1/blogComment" method="POST" role="form">
+                            <form action="/api/v1/blogComments" method="POST" role="form">
                                 <div class="form-group">
-                                    <textarea class="form-control" name="content" placeholder="Tell me what you think!" rows="3"></textarea>
+                                    <textarea class="form-control" name="comment" placeholder="Tell me what you think!" rows="3"></textarea>
                                 </div>
                                 <h4>Name:</h4>
                                 <div class="form-group">
@@ -100,6 +100,8 @@
                         </div>
                         <div class="well">
                         <h4>Comments</h4>
+                           <div id="blog-comments"></div>
+
 
                         </div>
 
