@@ -6,6 +6,8 @@ var bodyParser = require('body-parser');
 var db = require('./models/dbs');
 var blogModel = require('./models/blog');
 var commentModel = require('./models/comment');
+var contactModel = require('./models/contact');
+
 
 var app = express();
 
@@ -15,11 +17,15 @@ var blogRoutes = require('./routes/blog_posts');
 
 var commentRoutes = require('./routes/comments');
 
+var contactRoutes = require('./routes/contact');
+
 app.use(express.static('public'));
 
 app.use('/api/v1/blogPosts', blogRoutes);
 
 app.use('/api/v1/blogComments', commentRoutes);
+
+app.use('/api/v1/blogContact', contactRoutes);
 
 app.get('/', function(req, res){
 	res.readFile('index.html')
