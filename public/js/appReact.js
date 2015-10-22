@@ -10,7 +10,7 @@ var BlogList = React.createClass({
         	<p  key={blog.id}><span className="glyphicon glyphicon-time"></span>{blog.date}</p>
         	<hr/>
         	<p  key={blog.id}>
-						<div> {dangerouslySetInnerHTML = {__html: blog.body}}  </div> 	
+			<div key="blogBody" dangerouslySetInnerHTML = {{__html: blog.body}}/>   	
 			</p>
         	<hr/>
         	</div>
