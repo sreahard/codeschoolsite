@@ -43,6 +43,18 @@ a:active {
   text-decoration: none;
 }
 
+div.containerBlog {
+  min-height: 100px;
+  align-self: center;
+}
+
+.img-circle {
+  border-radius: 50%;
+  float:left;
+  margin: 0px 40px 0px 20px;
+  padding: 0px;
+
+}
 
 .logo {
   height: auto;

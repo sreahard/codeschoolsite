@@ -1,38 +1,42 @@
-(function(){
-	$.getJSON( "/api/v1/blogPosts", function( data ) {
-		var items = [];
-		$.each( data, function( key, val ) {
-			console.log(key, val)
-			console.log(val.title);
-			console.log(val.body);
-			console.log(val.author);
-			console.log(val.date);
-			items.push( "<article><h1>" + val.title + "</h1>" + "<p class=\"lead\"> by " + val.author + "</p><hr>" + "<p><span class=\"glyphicon glyphicon-time\"></span>" + " " + val.date + "</p><hr>" + val.body +"</div><hr></article>" );
-		});
-		$( "<div/>", {
-			"class": "my-new-list",
-			html: items.join( "" )
-		}).appendTo( "#blog-list" );
-	});
-})();
+var renderBlog = require('renderBlog');
 
-(function(){
-	$.getJSON( "/api/v1/blogComments", function( data ) {
-		var items = [];
-		$.each( data, function( key, val ) {
-			console.log(key, val)
-			console.log(val.title);
-			console.log(val.body);
-			console.log(val.author);
-			console.log(val.date);
-			items.push( "<article><h4>" + val.name + "</h4>" + "<p>" + val.comment + "</p><hr>");
-		});
-		$( "<div/>", {
-			"class": "my-new-comments",
-			html: items.join( "" )
-		}).appendTo( "#blog-comments" );
-	});
-})();
+var App = React.createClass({
+	getInitialState: function(){
+	return {data: []};
+},
+
+	loadBlogPosts: function(blog) {
+	// var blogPost = this.state.data;
+	$.ajax({
+			url: this.props.url,
+			dataType: 'json',
+			cache: false,
+			success: function(data){
+				console.log("inside success")
+				this.setState({data:data});
+			}.bind(this),
+			error: function(xhr, status, err){
+				console.log("Broken url is " + this.props.url)
+				console.error(this.props.url, status, err.toString());
+      		 }.bind(this)
+					});
+	},
+
+	componentDidMount: function(){
+	this.loadBlogPosts();
+},
+
+
+	render: function() {
+		return (
+			<div>
+				<BlogList data={this.state.data}/>
+			</div>
+			)
+	}
+})
+
+React.render(<App url="/api/v1/blogPosts"/>, document.getElementById("blogPosts") )
 
 
 var newClick = new AddClicks(0);
