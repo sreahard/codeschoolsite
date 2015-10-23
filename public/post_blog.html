@@ -18,6 +18,16 @@
 
     <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.5.1.js"></script>
     <script src="//cdn.ckeditor.com/4.5.4/full/ckeditor.js"></script>
+    <script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
+    <script>tinymce.init({
+    selector: "textarea",
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste"
+    ],
+    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+});</script>
 
 </head>
 <body>
@@ -39,6 +49,7 @@
             <li><a href="blog.html"><h3>Blog</h3></a></li>
             <li><a href="index.html"><h3>About</h3></a></li>
             <li><a href="contact.html"><h3>Contact</h3></a></li>
+            <li><a href="/login"><h3>Login</h3></a></li>
         </ul>
     </div>
 
@@ -46,7 +57,8 @@
 </nav>
 <div class="container-fluid">
     <div class="container">
-        <form action="/api/v1/blogPosts" method="POST" role="form">
+    <div id="blogForm"></div>
+<!--         <form action="/api/v1/blogPosts" method="POST" role="form">
         <legend>Where I can write my blogs</legend>
 
             <div class="form-group">
@@ -66,13 +78,17 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-    </div>
+ -->    </div>
 </div>
 
-     <script src="./js/clicker.js"></script>
-     <script src="./js/app.js"></script>
-     <script src="./js/tweet.js"></script>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/1.1.1/js/md5.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script type="text/jsx" src="./js/blogForm.js"></script>
+
  </body>
 </body>

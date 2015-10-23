@@ -34,7 +34,6 @@ router.route('/')
        res.send("That's not an animal")
      } else{
        console.log("You posted to your blog");
-       res.redirect('/blog.html');
        res.send(blogPost);
      }
    });

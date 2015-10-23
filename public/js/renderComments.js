@@ -5,7 +5,7 @@ var CommentList = React.createClass({
         return (
         	<div className="containerBlog">
         	<div className="row">
-        	<img className="img-circle" src="http://placebear.com/60/60"/>
+        	<img className="img-circle" src="http://placecreature.com/60/60"/>
         	<p  key={comment.id}><strong>{comment.name}</strong></p>
         	<p  key={comment.id}>{comment.comment}</p>
         	<hr/>
