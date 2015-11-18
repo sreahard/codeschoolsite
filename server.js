@@ -75,9 +75,10 @@ require('./routes/commentRoutes')(app, passport);
 
 
 var contactRoutes = require('./routes/contactRoutes');
+var gitHubRoutes = require('./routes/gitHubRoutes');
 
 
-
+app.use('/api/v1/gitHub', gitHubRoutes);
 app.use('/api/v1/blogContact', contactRoutes);
 
 // app.get('/', function(req, res){

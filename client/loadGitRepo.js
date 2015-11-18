@@ -1,13 +1,12 @@
 var React = require('react');
-var BlogList = require('./blogList');
+var GitRepoList = require('./gitRepoList');
 
-var BlogLoad = React.createClass({
+var GitRepoLoad = React.createClass({
 	getInitialState: function(){
 	return {data: []};
 },
 
-	loadBlogPosts: function(blog) {
-	// var blogPost = this.state.data;
+	loadComments: function(comment) {
 	$.ajax({
 			url: this.props.url,
 			dataType: 'json',
@@ -24,18 +23,17 @@ var BlogLoad = React.createClass({
 	},
 
 	componentDidMount: function(){
-	this.loadBlogPosts();
+	this.loadComments();
 },
 
 
 	render: function() {
 		return (
 			<div>
-				<BlogList data={this.state.data}/>
+				<GitRepoList data={this.state.data}/>
 			</div>
 			)
 	}
 })
 
-
-React.render(<BlogLoad url="/api/v1/blogPosts"/>, document.getElementById("blogPosts") );
+React.render(<GitRepoLoad url="https://api.github.com/users/sreahard/repos"/>, document.getElementById("gitRepos") );

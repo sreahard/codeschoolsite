@@ -37,4 +37,4 @@ var CommentLoad = React.createClass({
 	}
 })
 
-module.exports = CommentLoad;
+React.render(<CommentLoad url="/api/v1/blogComments"/>, document.getElementById("blogComments") );

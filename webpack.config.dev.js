@@ -3,13 +3,21 @@ var webpack = require('webpack');
 
 module.exports = {
   devtool: 'eval',
-  entry: [
+  entry: {
+
+    home: [
     'webpack-hot-middleware/client',
     './client/blogApp'
   ],
+    blogForm: [
+    'webpack-hot-middleware/client',
+    './client/blogFormApp'
+  ]
+},
+
   output: {
     path: path.join(__dirname, 'static'),
-    filename: 'bundle.js',
+    filename: '[name].js',
     publicPath: '/static/'
   },
   plugins: [
