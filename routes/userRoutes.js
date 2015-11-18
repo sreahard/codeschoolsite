@@ -2,7 +2,30 @@ module.exports = function(app, passport) {
 
 // normal routes ===============================================================
 
-    // show the home page (will also have our login links)
+    // show the pages that use user refs (will also have our login links)
+    app.get('/', function(req, res) {
+        res.render('./pages/index.ejs', {
+            user : req.user
+        });
+    });
+
+    app.get('/contact', function(req, res) {
+        res.render('./pages/contact.ejs', {
+            user : req.user
+        });
+    });
+
+    app.get('/post_blog', function(req, res) {
+        res.render('./pages/post_blog.ejs', {
+            user : req.user
+        });
+    });
+
+    app.get('/blog', function(req, res) {
+        res.render('./pages/rendered_blog.ejs', {
+            user : req.user
+        });
+    });
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {

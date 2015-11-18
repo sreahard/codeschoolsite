@@ -1,28 +1,7 @@
-var CommentList = React.createClass({
-	render: function() {
+var React = require('react');
+var CommentList = require('./commentList');
 
-      var commentData = this.props.data.map(function(comment){
-        return (
-        	<div className="containerBlog">
-        	<div className="row">
-        	<img className="img-circle" src="http://placecreature.com/60/60"/>
-        	<p  key={comment.id}><strong>{comment.name}</strong></p>
-        	<p  key={comment.id}>{comment.comment}</p>
-        	<hr/>
-        	</div>
-        	</div>
-        	)
-      });
-			return (
-			<div>
-			{commentData}
-			</div>
-			);
-	}
-});
-
-
-var App = React.createClass({
+var CommentLoad = React.createClass({
 	getInitialState: function(){
 	return {data: []};
 },
@@ -58,4 +37,4 @@ var App = React.createClass({
 	}
 })
 
-React.render(<App url="/api/v1/blogComments"/>, document.getElementById("blogComments") )
+module.exports = CommentLoad;

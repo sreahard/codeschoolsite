@@ -1,3 +1,5 @@
+var React = require('react');
+
 var BlogForm = React.createClass({
 
    handleSubmit: function(e){
