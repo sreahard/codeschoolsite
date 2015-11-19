@@ -1,12 +1,13 @@
 var React = require('react');
-var GitRepoList = require('./gitRepoList');
+var CommentList = require('../render/commentList');
 
-var GitRepoLoad = React.createClass({
+var CommentLoad = React.createClass({
 	getInitialState: function(){
 	return {data: []};
 },
 
 	loadComments: function(comment) {
+	// var blogPost = this.state.data;
 	$.ajax({
 			url: this.props.url,
 			dataType: 'json',
@@ -30,10 +31,10 @@ var GitRepoLoad = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<GitRepoList data={this.state.data}/>
+				<CommentList data={this.state.data}/>
 			</div>
 			)
 	}
 })
 
-React.render(<GitRepoLoad url="https://api.github.com/users/sreahard/repos"/>, document.getElementById("gitRepos") );
+React.render(<CommentLoad url="/api/v1/blogComments"/>, document.getElementById("blogComments") );

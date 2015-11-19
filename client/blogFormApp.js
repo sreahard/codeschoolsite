@@ -1,3 +1,3 @@
 var React = require ('react');
 
-var BlogForm = require ('./blogForm')
+var BlogForm = require ('./render/blogForm')

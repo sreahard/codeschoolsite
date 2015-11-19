@@ -10,19 +10,14 @@ fetchGitHubEvents = function(req,res){
 
 	.then(function (response){
 		var gitStuff = response.data.map(function(g){
-		for (var i=0; i < g.payload.commit.length; i++) {
-			console.log(i)
-		  return {"id":g.id, "type": g.type, "repo": g.repo.name, "myAvatar": g.actor.avatar_url, "commitMessage": g.payload.commit[i].message}
-		}
+		  return {"id":g.id, "type": g.type, "repo": g.repo.name, "myAvatar": g.actor.avatar_url, "commits": g.payload.commits}
 		});
 
-		console.log(gitStuff);
-		res.json(gitStuff);
+		res.json(gitStuff);	
 	})
 
 	.catch(function(response){
-		console.log(response.data);
-				res.json(response.data);
+		res.json(response.data);
 	});
 }
 

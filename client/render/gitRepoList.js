@@ -1,18 +1,19 @@
 var React = require('react');
 
 var GitRepoList = React.createClass({
-	render: function() {
 
+	render: function() {
 
       var gitData = this.props.data.map(function(git){
         if (git.fork === false)
         return (
         	<div>
-        	<h4  key={git.id}><strong><a href={git.html_url} target="_blank">{git.name}</a></strong></h4>
+        	<h3  key={git.id}><a href={git.html_url} target="_blank"><i className="fa fa-github"></i> {git.name}</a></h3>
         	<p>{git.description}</p>
         	</div>
         	)
       });
+
 			return (
 			<div>
 			{gitData}
@@ -22,5 +23,6 @@ var GitRepoList = React.createClass({
 });
 
 module.exports = GitRepoList;
+
 
 

@@ -1,3 +1,5 @@
+var React = require('react')
+
 var GRAVATAR_URL = "http://gravatar.com/avatar"
 
 
@@ -18,9 +20,8 @@ var Gravatar = React.createClass({
 		var users = this.props.users.map(function(u){
 
 			var hash = md5(u.email);
-			var size = 36;
 
-			var url = GRAVATAR_URL + "/" + hash + "?=" + size;
+			var url = GRAVATAR_URL + "/" + hash;
 
 			return (
 				<li key={u.id}> <img src={url} className="img-circle" /> {u.email} </li>

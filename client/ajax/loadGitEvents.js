@@ -1,19 +1,18 @@
 var React = require('react');
-var BlogList = require('./blogList');
+var GitEventsList = require('../render/gitEventsList');
 
-var BlogLoad = React.createClass({
+var GitEventsLoad = React.createClass({
 	getInitialState: function(){
 	return {data: []};
 },
 
-	loadBlogPosts: function(blog) {
-	// var blogPost = this.state.data;
+	loadEvents: function(comment) {
 	$.ajax({
 			url: this.props.url,
 			dataType: 'json',
 			cache: false,
 			success: function(data){
-				console.log("inside success")
+				console.log("load events success")
 				this.setState({data:data});
 			}.bind(this),
 			error: function(xhr, status, err){
@@ -24,18 +23,17 @@ var BlogLoad = React.createClass({
 	},
 
 	componentDidMount: function(){
-	this.loadBlogPosts();
+	this.loadEvents();
 },
 
 
 	render: function() {
 		return (
 			<div>
-				<BlogList data={this.state.data}/>
+				<GitEventsList data={this.state.data}/>
 			</div>
 			)
 	}
 })
 
-
-React.render(<BlogLoad url="/api/v1/blogPosts"/>, document.getElementById("blogPosts") );
+React.render(<GitEventsLoad url="/api/v1/github"/>, document.getElementById("gitEvents") );
