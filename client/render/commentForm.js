@@ -1,60 +1,51 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var BlogList = require("./blogList")
-
 
 var CommentForm = React.createClass({
     
-    handleSubmit: function(id, comment){
+    handleCommentSubmit: function(e){
+        e.preventDefault();
+        var comment = this.refs.comment.getDOMNode().value;
+        if(!comment){
+            return;
+        }
 
-      // e.preventDefault();
-  
-      var id = id;
+        var data = ({ comment: comment });
+        var id = this.props.blogId;
+        var self = this;
 
-      var comment = React.findDOMNode(this.refs.comment).value.trim();
-      
-      alert(id, comment);
-
-      var data = ({comment: comment});
-          $.ajax({
-              url: '/api/v1/blogPosts/' + id + '/comment',
-              dataType: 'json',
-              data: data,
-              type:'POST',
-                  success: function(response){
-                  console.log("posting data!",data, response)
-                  document.location='/blog'
-                  }.bind(this),
-                  error: function(xhr, status, err){
-                      console.log("not posting data!")
-                      console.error(this.props.url, status, err.toString());
-                  }.bind(this)
-          })
-  },
-
-	render: function() {
-
-        var that = this;
-
-        var blogData = this.props.data.map(function(blog){
-                return (
-                    <div className="well">
-                    <h4>Leave a Comment:</h4>
-                    <form>
-                    <div className="form-group">
-                    <textarea key={blogId + "3"} className="form-control" ref="comment" placeholder="Join the conversation!" rows="3"></textarea>
-                    </div>
-                    <button key={blogId + "4"} onClick={this.handleSubmit.bind(this, blog._id)} type="submit" className="btn btn-s btn-default"> Comment</button>
-                    </form>
-                    </div>
-            	)
-              }.bind(this));
-
-
-			return (
-			<div>
-			{blogData}
-			</div>
-			);
-	}
+        $.ajax({
+            url: '/api/v1/blogPosts/' + id + '/comment',
+            dataType: 'json',
+            data: data,
+            type:'POST',
+                success: function(response){
+                console.log("posting data!",data, response)
+                document.location='/blog'
+                // if(self.props.onPost){
+                //   self.props.onPost()
+                // }
+                }.bind(this),
+                error: function(xhr, status, err){
+                    console.log("not posting data!")
+                    console.error( status, err.toString());
+                }.bind(this)
+        })
+        this.refs.comment.getDOMNode().value = ''
+        
+    },
+    render: function() {
+      return (
+        <div>
+          <form>
+              <div className="form-group">
+                  <input type="text" className="form-control" ref="comment" placeholder="comment"/>
+              </div>
+              <button onClick={this.handleCommentSubmit} type="submit" className="btn btn-default">Submit</button>
+          </form>
+        </div>
+          );
+    }
 });
+
+module.exports = CommentForm;

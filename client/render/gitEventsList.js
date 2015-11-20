@@ -54,7 +54,7 @@ var GitEventsList = React.createClass({
       var repoNamesRendered = (repo.charAt(9).toUpperCase() + repo.slice(10))
       return (
         <div>
-        <ReactCSSTransitionGroup transitionName="example">
+        <ReactCSSTransitionGroup transitionName="titles" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
         <h3 className="panel-header" onClick={that.toggle.bind(that, repo)}><i className="fa fa-github">
         </i> {repoNamesRendered}</h3>
         </ReactCSSTransitionGroup>
@@ -65,7 +65,7 @@ var GitEventsList = React.createClass({
     return (
       <div>
       {repoButtons}
-    <ReactCSSTransitionGroup transitionName="example">
+    <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
     {gitEvents}
     </ReactCSSTransitionGroup>
       </div>
