@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 var Gravatar = require('../render/renderGravatars')
 
 var UserLoad = React.createClass({
@@ -37,4 +38,4 @@ var UserLoad = React.createClass({
 	}
 })
 
-React.render(<UserLoad url="/api/v1/users"/>, document.getElementById("gravatars") );
+ReactDOM.render(<UserLoad url="/api/v1/users"/>, document.getElementById("gravatars") );

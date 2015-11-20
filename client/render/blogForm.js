@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 
 var BlogForm = React.createClass({
 
@@ -56,5 +57,5 @@ var BlogForm = React.createClass({
    }
 });
 
-React.render(<BlogForm url="/api/v1/blogPosts"/>, document.getElementById('blogForm'));
+ReactDOM.render(<BlogForm url="/api/v1/blogPosts"/>, document.getElementById('blogForm'));
 

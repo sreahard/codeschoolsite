@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 var CommentList = require('../render/commentList');
 
 var CommentLoad = React.createClass({
@@ -37,4 +38,4 @@ var CommentLoad = React.createClass({
 	}
 })
 
-React.render(<CommentLoad url="/api/v1/blogComments"/>, document.getElementById("blogComments") );
+ReactDOM.render(<CommentLoad url="/api/v1/blogComments"/>, document.getElementById("blogComments") );

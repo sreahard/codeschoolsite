@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 var GitRepoList = require('../render/gitRepoList');
 
 
@@ -39,4 +40,4 @@ var GitRepoLoad = React.createClass({
 
 // To add more info from git hub events, update routes/gitHubRoutes.js
 
-React.render(<GitRepoLoad url="https://api.github.com/users/sreahard/repos"/>, document.getElementById("gitRepos") );
+ReactDOM.render(<GitRepoLoad url="https://api.github.com/users/sreahard/repos"/>, document.getElementById("gitRepos") );

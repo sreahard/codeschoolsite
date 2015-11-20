@@ -195,5 +195,79 @@ var data = [
         return (url)
     });
 
-  console.log(newURL)
+var blog = [
+  {
+    "_id": "5625431a79ad4c0468000001",
+    "title": "How I am learning to code good and do other things good too.",
+    "author": "Suzie Reahard [rear-duh]",
+    "body": "<img class=\"img-responsive\" src=\"./images/blogpost1.jpg\" alt=\"\">\r\n\r\n                        <hr>\r\n\r\n                        <p>Now, do you wanna steer, or are you too old to sit on your Pop's lap and drive? Look at us, crying like a couple of girls on the last day of camp. So Ann, the question is, do you want a man or a boy? I know how I would answer.</p>\r\n\r\n                        <p>Ah coodle doodle doo, ah coodle doodle doo. No. I was ashamed to be seen with you. I like being with you.</p>\r\n\r\n                        <p>Are you at all concerned about an uprising? Can't a guy call his mother pretty without it seeming strange? Amen. And how about that little piece of tail on her? Cute! She's trying o prove that she's closer to my children than I am, but the joke's on her, because she doesn't know how little I care for GOB. It feels good to be back in a queen! There's unlimited juice? This party is gonna be off the hook. I've got a nice hard cot with his name on it. You'd do that to your own brother? I said \"cot.\" A lady of the evening. Working girl. She turns illusions for money.</p>\r\n\r\n                        <p>The guy runs a prison, he can have any piece of ass he wants. I know, I just call her Annabelle cause she's shaped like a… she's the belle of the ball! We all need to pick a day to try and make trend.</p>\r\n\r\n                        <p>I mean, it's one banana, Michael. What could it cost, ten dollars? Boy, I sure feel like a Mary without a Peter and a Paul. And I wouldn't just lie there, if that's what you're thinking. That's not what I WAS thinking. Make love in your *own* hand, Mother! Monday morning. COME ON! I could use a leather jacket for when I'm on my hog and have to go into a controlled slide. Happy. Did you enjoy your lunch, mom? You drank it fast enough.</p>\r\n\r\n ",
+    "__v": 0,
+    "date": "1990-12-10T07:00:00.000Z",
+    "comments": []
+  },
+  {
+    "_id": "564cc9386fddaa12b8e3c6ea",
+    "title": "Hmmm...",
+    "author": "Me",
+    "body": "",
+    "__v": 0,
+    "date": "2015-11-18T18:53:44.541Z",
+    "comments": []
+  },
+  {
+    "_id": "564cdbe6fdafea54bac0c1a1",
+    "title": "Test Blog",
+    "author": "Suzie",
+    "body": "I can still use html in <strong>this area</strong> right? With <a href=\"/\">links</a> and stuff?",
+    "__v": 0,
+    "date": "2015-11-18T20:13:26.009Z",
+    "comments": []
+  },
+  {
+    "_id": "564cc8f96fddaa12b8e3c6e9",
+    "title": "Titel",
+    "author": "Author",
+    "__v": 0,
+    "date": "2015-11-18T18:52:41.675Z",
+    "comments": []
+  },
+  {
+    "_id": "564bb236bec5a505ae3409b5",
+    "title": "New Blog Posts Are Posting",
+    "author": "Suzie",
+    "body": "Can I now require user AND update a post?!??!??!?!??!?!?!?!??!",
+    "__v": 4,
+    "date": "2015-11-17T23:03:18.488Z",
+    "comments": [
+      {
+        "_id": "564e50f0f7236c24d716999b",
+        "comment": "New Comment",
+        "__v": 0,
+        "date": "2015-11-19T22:45:04.670Z"
+      },
+      {
+        "_id": "564e55c8ec554f81d7907a98",
+        "comment": "New Comment #2",
+        "__v": 0,
+        "date": "2015-11-19T23:05:44.041Z"
+      },
+      {
+        "_id": "564e55ccec554f81d7907a99",
+        "comment": "New Comment #3",
+        "__v": 0,
+        "date": "2015-11-19T23:05:48.421Z"
+      },
+      {
+        "_id": "564e55d0ec554f81d7907a9a",
+        "comment": "New Comment #4",
+        "__v": 0,
+        "date": "2015-11-19T23:05:52.406Z"
+      }
+    ]
+  }
+]
 
+// var comments = 
+// for (var i = 0; 
+
+console.log(blog.comments.length)

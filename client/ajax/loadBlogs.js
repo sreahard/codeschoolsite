@@ -1,4 +1,6 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
+
 var BlogList = require('../render/blogList');
 
 var BlogLoad = React.createClass({
@@ -31,11 +33,11 @@ var BlogLoad = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<BlogList data={this.state.data}/>
+				<BlogList data={this.state.data} url= "/api/v1/blogPosts/"/>
 			</div>
 			)
 	}
 })
 
 
-React.render(<BlogLoad url="/api/v1/blogPosts"/>, document.getElementById("blogPosts") );
+ReactDOM.render(<BlogLoad url="/api/v1/blogPosts"/>, document.getElementById("blogPosts") );

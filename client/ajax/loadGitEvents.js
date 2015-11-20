@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 var GitEventsList = require('../render/gitEventsList');
 
 var GitEventsLoad = React.createClass({
@@ -36,4 +37,4 @@ var GitEventsLoad = React.createClass({
 	}
 })
 
-React.render(<GitEventsLoad url="/api/v1/github"/>, document.getElementById("gitEvents") );
+ReactDOM.render(<GitEventsLoad url="/api/v1/github"/>, document.getElementById("gitEvents") );

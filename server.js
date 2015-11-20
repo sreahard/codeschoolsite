@@ -71,7 +71,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // // routes ======================================================================
 require('./routes/userRoutes')(app, passport);
 require('./routes/blogRoutes')(app, passport);
-require('./routes/commentRoutes')(app, passport);
+// require('./routes/commentRoutes')(app, passport);
 
 
 var contactRoutes = require('./routes/contactRoutes');
