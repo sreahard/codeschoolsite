@@ -29,16 +29,22 @@ var GitEventsList = React.createClass({
               var commitId = (c.url.slice(-41));
               var urlBase = (c.url.slice(0,8) + c.url.slice(12,22) + c.url.slice(28));
               var url = (urlBase.slice(0, -42) + commitId);
+              if (c.message.includes('README')) {
               return(
-                <a href={url} target="_blank">{c.message}</a>
+                null
                 )
+            } else {
+              return(
+                <p className="panel-header"><i className="fa fa-code-fork"></i><a href={url} target="_blank"> {c.message}</a></p>
+                )
+            }
             });
       };
 
       if (e.repo === this.state.fltr && shouldShow)
         return(
           <div>
-          <p className="panel-header"><i className="fa fa-code-fork"></i> {commitMessages} </p>
+           {commitMessages} 
           </div>
           )
     }.bind(this));
@@ -54,20 +60,19 @@ var GitEventsList = React.createClass({
       var repoNamesRendered = (repo.charAt(9).toUpperCase() + repo.slice(10))
       return (
         <div>
-        <ReactCSSTransitionGroup transitionName="titles" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-        <h3 className="panel-header" onClick={that.toggle.bind(that, repo)}><i className="fa fa-github">
-        </i> {repoNamesRendered}</h3>
+            <h3 className="panel-header" onClick={that.toggle.bind(that, repo)}>
+            <i className="fa fa-github"></i>
+             {repoNamesRendered}</h3>
+                <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+          {gitEvents}
         </ReactCSSTransitionGroup>
-        </div>
+</div>
         )
     });
 
     return (
       <div>
-      {repoButtons}
-    <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-    {gitEvents}
-    </ReactCSSTransitionGroup>
+        {repoButtons}
       </div>
       );
 

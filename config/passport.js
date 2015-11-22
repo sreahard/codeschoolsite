@@ -1,6 +1,7 @@
 var LocalStrategy    = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var TwitterStrategy  = require('passport-twitter').Strategy;
+var GitHubStrategy   = require('passport-github').Strategy;
 
 // load up the user model
 var User       = require('../models/user');
@@ -189,6 +190,23 @@ function(req, token, refreshToken, profile, done) {
         });
 
     })); 
+    
+// =========================================================================
+    // GITHUB =================================================================
+    // =========================================================================
+
+passport.use(new GitHubStrategy({
+    clientID: configAuth.gihubAuth.clientID,,
+    clientSecret: configAuth.githubAuth.clientSecret,,
+    callbackURL: configAuth.githubAuth.callbackURL,
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ githubId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
+
 
 // =========================================================================
     // TWITTER =================================================================

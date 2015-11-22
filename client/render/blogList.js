@@ -23,7 +23,7 @@ var BlogList = React.createClass({
                     </div>
                     )
                 }.bind(this));
-                
+            
                 return (
                 	<div>
                         <div>
@@ -32,8 +32,8 @@ var BlogList = React.createClass({
                         	<hr/>
                         	<p><span className="glyphicon glyphicon-time"></span> {blogDate}</p>
                         	<hr/>
-                            <img src={blog.img} className="image-responsive img-blog"/>
-                            {blog.img != null ? <hr/> : ''}
+                            {blog.img === "" ? '' : <img src={blog.img} className="image-responsive img-blog"/>}
+                            {blog.img === "" ? '' : <hr/>}
                 			<div key="blogBody" dangerouslySetInnerHTML = {{__html: blog.body}}/>   	
                     	</div>
                         <hr/>

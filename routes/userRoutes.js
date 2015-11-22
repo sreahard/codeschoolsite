@@ -115,13 +115,26 @@ app.get('/login', function(req, res) {
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
             successRedirect : '/blog',
-            failureRedirect : '/dram_shop'
+            failureRedirect : '/'
         }));
 
     // route for logging out
     app.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
+    });
+    // =====================================
+    // GITHUB ROUTES ======================
+    // =====================================
+
+    app.get('/auth/github',
+        passport.authenticate('github'));
+
+    app.get('/auth/github/callback', 
+      passport.authenticate('github', { failureRedirect: '/login' }),
+      function(req, res) {
+        // Successful authentication, redirect home.
+    res.redirect('/');
     });
 
     // =====================================
@@ -134,7 +147,7 @@ app.get('/login', function(req, res) {
     app.get('/auth/twitter/callback',
         passport.authenticate('twitter', {
             successRedirect : '/blog',
-            failureRedirect : '/dram_shop'
+            failureRedirect : '/'
         }));
 
     // locally --------------------------------
@@ -168,7 +181,7 @@ app.get('/login', function(req, res) {
         app.get('/connect/twitter/callback',
             passport.authorize('twitter', {
                 successRedirect : '/blog',
-                failureRedirect : '/dram_shop'
+                failureRedirect : '/'
             }));
 
         // local -----------------------------------
