@@ -6,32 +6,34 @@ var BlogList = React.createClass({
 
 	render: function() {
         var that = this;
-
         var blogData = this.props.data.map(function(blog){
-                    
+
             var blogId = blog._id;
-            
+            var blogDate = new Date(blog.date).toDateString();
             var comments = blog.comments.map(function(comments){
+                var commentDate = new Date(comments.date).toDateString();
                 return (
                     <div className="containerBlog">
                         <div className="row">
                             <img className="img-circle" src="http://placecreature.com/60/60"/>
                             <p><strong>{comments.comment}</strong></p>
-                            <p>{comments.date}</p>
+                            <p><span className="glyphicon glyphicon-time"></span> {commentDate}</p>
                             <hr/>
                         </div>
                     </div>
                     )
                 }.bind(this));
-            
+                
                 return (
                 	<div>
                         <div>
                         	<h1>{blog.title}</h1>
                         	<p className="lead"> by {blog.author}</p>
                         	<hr/>
-                        	<p><span className="glyphicon glyphicon-time"></span>{blog.date}</p>
+                        	<p><span className="glyphicon glyphicon-time"></span> {blogDate}</p>
                         	<hr/>
+                            <img src={blog.img} className="image-responsive img-blog"/>
+                            {blog.img != null ? <hr/> : ''}
                 			<div key="blogBody" dangerouslySetInnerHTML = {{__html: blog.body}}/>   	
                     	</div>
                         <hr/>

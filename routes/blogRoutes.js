@@ -18,9 +18,17 @@ module.exports = function(app, passport){
 
   app.post('/api/v1/blogPosts', function(req, res){
 
-   var newPost = req.body;
+    var title = req.body.title;
+    var body = req.body.body;
+    var author = req.body.author;
+    var image = req.body.image;
 
-   mongoose.model('Blog').create(newPost,
+   mongoose.model('Blog').create({
+      title: title,
+      body: body,
+      author: author,
+      image: image
+    },
    function(err, blogPost){
      if(err){
        res.send("That's not a Post")
@@ -54,69 +62,74 @@ module.exports = function(app, passport){
     mongoose.model('Blog').findById({
       _id: req.params.id 
     })
-    .populate('comments').exec(function(err, comments) {
+    .populate('comments').populate('user').exec(function(err, comments) {
       if(err)
         res.send(err)
         res.send(comments)
     });
   });
 
-  app.post('/api/v1/blogPosts/:id/comment', function(req, res){
-    var newComment = req.body;
-    mongoose.model('Comment').create(newComment, 
-      function(err, comment) {
-      if(err)
-        res.send(err)
-      mongoose.model('Blog').findById({
-        _id: req.params.id
-      }, function(err, blog) {
-        if(err)
-          res.send(err)
-        blog.comments.push(comment._id)
-        blog.save();
-        res.send(comment)
-      })
-    })
-  })
-
-
   // app.post('/api/v1/blogPosts/:id/comment', function(req, res){
-   
-  //  var newComment = req.body;
-    
-  //   // Find beer by beerId
-  //   mongoose.model('Blog').findById({
-  //     _id: req.params.id
-  //   }, function(err, blog) {
-  //     if(err) {
-  //       res.send(err);
-  //     }
-  //   mongoose.model('User').findById({
-  //     _id: req.user._id
-  //   }, function(err, user){
-  //     if(err){
-  //       res.send(err);
-  //     }
+  //   var comment = req.body.comment;
+  //   var user = req.user;    
 
-  //   // Add newComment to the blog's comment array
-
-  //   blog.comments = blog.comments || [];
-  //   blog.comments.push({
-  //     comment: newRating.comment,
-  //     user_id: user
-  //   })  
-    
-    // Save the updated beer back to the DB
-    
-  //   blog.save(function(err, blog) {
+  //   mongoose.model('Comment').create({
+  //       comment: comment,
+  //       user: user,
+  //       blog: req.params.idnewComment
+  //     }, function(err, comment) {
+  //     if(err)
+  //       res.send(err)
+  //     mongoose.model('Blog').findById({
+  //       _id: req.params.id
+  //     }, function(err, blog) {
   //       if(err)
-  //         res.send(err);
+  //         res.send(err)
+  //       blog.comments.push(comment._id)
+  //       blog.save();
+  //       res.send(comment)
+  //     })
+  //   })
+  // })
+
+
+  app.post('/api/v1/blogPosts/:id/comment', function(req, res){
+   
+   var newComment = req.body;
+    
+    // Find beer by beerId
+    mongoose.model('Blog').findById({
+      _id: req.params.id
+    }, function(err, blog) {
+      if(err) {
+        res.send(err);
+      }
+    mongoose.model('User').findById({
+      _id: req.user._id
+    }, function(err, user){
+      if(err){
+        res.send(err);
+      }
+
+    // Add newComment to the blog's comment array
+
+    blog.comments = blog.comments || [];
+    blog.comments.push({
+      comment: newComment.comment,
+      user: user
+    })  
+    
+    // Save the updated blog back to the DB
+    
+    blog.save(function(err, blog) {
+        if(err)
+          res.send(err);
           
-  //         res.json({ message: "Comment was posted"});
-  //       });
-  //     });
-  //   }); 
-  // })  
+          res.json({ message: "Comment was posted"});
+        });
+      });
+    }); 
+  })  
 
 
 
@@ -128,6 +141,7 @@ module.exports = function(app, passport){
       blogPost.title = req.body.title;
       blogPost.author = req.body.author;
       blogPost.body = req.body.body;
+      blogPost.img = req.body.img;
 
       console.log(JSON.stringify(blogPost));
 
