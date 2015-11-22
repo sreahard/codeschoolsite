@@ -1,6 +1,6 @@
 var React = require('react')
 
-var GRAVATAR_URL = "http://gravatar.com/avatar"
+var GRAVATAR_URL = "http://gravatar.com/avatar/"
 
 var Gravatar = React.createClass({
 	render: function() {
@@ -13,7 +13,7 @@ var Gravatar = React.createClass({
 			var size = 60;
 			var genericAvatar = 'https://mtcodeschoolsr.herokuapp.com/images/dog2.jpg';
 
-			var url = GRAVATAR_URL + "/" + hash + "?s=" + size + "&d=" + genericAvatar;
+			var url = GRAVATAR_URL + hash + "?s=" + size + "&d=" + genericAvatar;
 			
 			return (
 			<div className="containerBlog">

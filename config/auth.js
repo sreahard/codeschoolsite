@@ -1,8 +1,8 @@
 module.exports = {
 
     'facebookAuth' : {
-        'clientID'      : '565890740227653', // your App ID
-        'clientSecret'  : 'bfdbfc1d7f14c59f4d0de671ff316ee0', // your App Secret
+        'clientID'      : '786706041439113', // your App ID
+        'clientSecret'  : '6070be5b6d72b631ed32fadb7f292ae4', // your App Secret
         'callbackURL'   : 'http://localhost:4000/auth/facebook/callback'
     },
 
@@ -12,9 +12,10 @@ module.exports = {
         'callbackURL'       : 'http://localhost:4000/auth/twitter/callback'
     },
     'githubAuth' : {
-        'consumerKey'       : 'd4e40726689afe35e13d',
-        'consumerSecret'    : '2bc32c469c5f4810bee357882c4a4ba8f77df2f2',
+        'client_ID'       : 'd4e40726689afe35e13d',
+        'client_Secret'    : '2bc32c469c5f4810bee357882c4a4ba8f77df2f2',
         'callbackURL'       : 'http://localhost:4000/auth/github/callback'
     }
 
 };
+

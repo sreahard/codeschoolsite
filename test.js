@@ -270,4 +270,3 @@ var blog = [
 // var comments = 
 // for (var i = 0; 
 
-console.log(blog.comments.length)

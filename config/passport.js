@@ -196,17 +196,80 @@ function(req, token, refreshToken, profile, done) {
     // =========================================================================
 
 passport.use(new GitHubStrategy({
-    clientID: configAuth.gihubAuth.clientID,,
-    clientSecret: configAuth.githubAuth.clientSecret,,
-    callbackURL: configAuth.githubAuth.callbackURL,
+    clientID: 'd4e40726689afe35e13d',
+    clientSecret: '2bc32c469c5f4810bee357882c4a4ba8f77df2f2',
+    callbackURL: 'http://localhost:4000/auth/github/callback'
   },
-  function(accessToken, refreshToken, profile, done) {
-    User.findOrCreate({ githubId: profile.id }, function (err, user) {
-      return done(err, user);
-    });
-  }
-));
+  function(req, token, refreshToken, profile, done) {
 
+        // asynchronous
+        process.nextTick(function() {
+
+            if(!req.user) {
+
+            // find the user in the database based on their github id
+            User.findOne({ 'github.id' : profile.id }, function(err, user) {
+
+                // if there is an error, stop everything and return that
+                // ie an error connecting to the database
+                if (err)
+                    return done(err);
+
+                // if the user is found, then log them in
+                if (user) {
+                    if (!user.github.token) {
+                        user.github.token = token;
+                        user.github.name  = profile.name.givenName + ' ' + profile.name.familyName;
+                        user.github.email = profile.emails[0].value;
+                        user.save(function(err) {
+                            if (err)
+                                throw err;
+                            return done(null, user);
+                        });
+                    }
+                    return done(null, user); // user found, return that user
+                } else {
+                    // if there is no user found with that github id, create them
+                    var newUser            = new User();
+
+                    // set all of the github information in our user model
+                    newUser.github.id    = profile.id; // set the users github id                   
+                    newUser.github.token = token; // we will save the token that github provides to the user                    
+                    newUser.github.name  = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
+                    newUser.github.email = profile.emails[0].value; // github can return multiple emails so we'll take the first
+
+                    // save our user to the database
+                    newUser.save(function(err) {
+                        if (err)
+                            throw err;
+
+                        // if successful, return the new user
+                        return done(null, newUser);
+                    });
+                }
+
+            });
+
+       } else {
+            // user already exists and is logged in, we have to link accounts
+                var user            = req.user; // pull the user out of the session
+
+                // update the current users github credentials
+                user.github.id    = profile.id;
+                user.github.token = token;
+                user.github.name  = profile.name.givenName + ' ' + profile.name.familyName;
+                user.github.email = profile.emails[0].value;
+
+                // save the user
+                user.save(function(err) {
+                    if (err)
+                        throw err;
+                    return done(null, user);
+                });
+            }
+        });
+
+    })); 
 
 // =========================================================================
     // TWITTER =================================================================

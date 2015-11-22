@@ -6,7 +6,12 @@ var BlogList = React.createClass({
 
 	render: function() {
         var that = this;
-        var blogData = this.props.data.map(function(blog){
+        var blogSort = this.props.data.sort(function(a, b){
+           var x = a.date, y = b.date;
+           return x < y ? -1 : x > y ? 1 : 0;
+           });
+
+        var blogData = blogSort.reverse().map(function(blog){
 
             var blogId = blog._id;
             var blogDate = new Date(blog.date).toDateString();
@@ -15,7 +20,7 @@ var BlogList = React.createClass({
                 return (
                     <div className="containerBlog">
                         <div className="row">
-                            <img className="img-circle" src="http://placecreature.com/60/60"/>
+                            <img className="img-circle" src="http://lorempixel.com/60/60/cats/"/>
                             <p><strong>{comments.comment}</strong></p>
                             <p><span className="glyphicon glyphicon-time"></span> {commentDate}</p>
                             <hr/>
@@ -23,7 +28,7 @@ var BlogList = React.createClass({
                     </div>
                     )
                 }.bind(this));
-            
+
                 return (
                 	<div>
                         <div>

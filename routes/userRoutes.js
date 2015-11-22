@@ -127,15 +127,14 @@ app.get('/login', function(req, res) {
     // GITHUB ROUTES ======================
     // =====================================
 
-    app.get('/auth/github',
-        passport.authenticate('github'));
+    app.get('/auth/github', passport.authenticate('github'));
 
-    app.get('/auth/github/callback', 
-      passport.authenticate('github', { failureRedirect: '/login' }),
-      function(req, res) {
-        // Successful authentication, redirect home.
-    res.redirect('/');
-    });
+    // handle the callback after twitter has authenticated the user
+    app.get('/auth/github/callback',
+        passport.authenticate('github', {
+            successRedirect : '/blog',
+            failureRedirect : '/'
+        }));
 
     // =====================================
     // TWITTER ROUTES ======================
