@@ -5,7 +5,7 @@ var CommentForm = React.createClass({
     
     handleCommentSubmit: function(e){
         e.preventDefault();
-        var comment = this.refs.comment.value;
+        var comment = this.refs.comment.getDOMNode().value;
         if(!comment){
             return;
         }
@@ -31,7 +31,7 @@ var CommentForm = React.createClass({
                     console.error( status, err.toString());
                 }.bind(this)
         })
-        this.refs.comment.value = ''
+        this.refs.comment.getDOMNode().value = ''
         
     },
     render: function() {

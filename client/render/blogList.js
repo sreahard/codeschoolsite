@@ -22,6 +22,9 @@ var BlogList = React.createClass({
                return x < y ? -1 : x > y ? 1 : 0;
                });
             var comments = commentSort.reverse().map(function(comments){
+                
+                // window.user = comment.user;
+                
                 var commentDate = new Date(comments.date).toDateString();
                 return (
                     <div className="containerBlog">
