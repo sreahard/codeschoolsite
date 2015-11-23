@@ -4,6 +4,7 @@ var ReactDOM = require('react-dom');
 var BlogList = require('../render/blogList');
 
 var BlogLoad = React.createClass({
+
 	getInitialState: function(){
 	return {data: []};
 },
@@ -31,9 +32,15 @@ var BlogLoad = React.createClass({
 
 
 	render: function() {
+
+	var that = this;
+    var doRefresh = function(){
+      that.loadBlogPosts()
+    }  
+
 		return (
 			<div>
-				<BlogList data={this.state.data} url= "/api/v1/blogPosts/"/>
+				<BlogList data={this.state.data} newData={doRefresh}/>
 			</div>
 			)
 	}

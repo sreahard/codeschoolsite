@@ -6,6 +6,7 @@ var BlogList = React.createClass({
 
 	render: function() {
         var that = this;
+
         var blogSort = this.props.data.sort(function(a, b){
            var x = a.date, y = b.date;
            return x < y ? -1 : x > y ? 1 : 0;
@@ -15,7 +16,12 @@ var BlogList = React.createClass({
 
             var blogId = blog._id;
             var blogDate = new Date(blog.date).toDateString();
-            var comments = blog.comments.map(function(comments){
+            
+            var commentSort = blog.comments.sort(function(a, b){
+               var x = a.date, y = b.date;
+               return x < y ? -1 : x > y ? 1 : 0;
+               });
+            var comments = commentSort.reverse().map(function(comments){
                 var commentDate = new Date(comments.date).toDateString();
                 return (
                     <div className="containerBlog">

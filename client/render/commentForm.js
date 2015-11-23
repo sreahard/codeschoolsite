@@ -5,14 +5,14 @@ var CommentForm = React.createClass({
     
     handleCommentSubmit: function(e){
         e.preventDefault();
-        var comment = this.refs.comment.getDOMNode().value;
+        var comment = this.refs.comment.value;
         if(!comment){
             return;
         }
 
         var data = ({ comment: comment });
         var id = this.props.blogId;
-        var self = this;
+        var that = this;
 
         $.ajax({
             url: '/api/v1/blogPosts/' + id + '/comment',
@@ -21,17 +21,17 @@ var CommentForm = React.createClass({
             type:'POST',
                 success: function(response){
                 console.log("posting data!",data, response)
-                document.location='/blog'
-                // if(self.props.onPost){
-                //   self.props.onPost()
-                // }
+                // document.location='/blog'
+                if(this.props.onPost){
+                  this.props.onPost()
+                }
                 }.bind(this),
                 error: function(xhr, status, err){
                     console.log("not posting data!")
                     console.error( status, err.toString());
                 }.bind(this)
         })
-        this.refs.comment.getDOMNode().value = ''
+        this.refs.comment.value = ''
         
     },
     render: function() {
