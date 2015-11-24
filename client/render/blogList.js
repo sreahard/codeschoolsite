@@ -22,20 +22,26 @@ var BlogList = React.createClass({
                return x < y ? -1 : x > y ? 1 : 0;
                });
             var comments = commentSort.reverse().map(function(comments){
-                
-                // window.user = comment.user;
+                console.log(comments.user)
+                if (comments.user != null) {
+                var hash = md5(comments.user.local.email);
+                var size = 60;
+                var genericAvatar = 'https://scontent-ord1-1.xx.fbcdn.net/hphotos-xaf1/t39.1997-6/p118x90/851586_392309744199671_988013196_n.png';
+
+                var url = 'http://gravatar.com/avatar/' + hash + "?s=" + size + "&d=" + genericAvatar;
                 
                 var commentDate = new Date(comments.date).toDateString();
                 return (
                     <div className="containerBlog">
                         <div className="row">
-                            <img className="img-circle" src="http://lorempixel.com/60/60/cats/"/>
+                            <img className="img-circle-xs" src={url}/>
                             <p><strong>{comments.comment}</strong></p>
                             <p><span className="glyphicon glyphicon-time"></span> {commentDate}</p>
                             <hr/>
                         </div>
                     </div>
                     )
+                    }
                 }.bind(this));
 
                 return (

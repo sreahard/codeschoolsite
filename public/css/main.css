@@ -31,7 +31,7 @@ h3 {
 }
 
 a {
-  color: rgb(217,29, 29);
+  color: rgb(14, 122, 146);
 }
 
 a:hover {
@@ -82,12 +82,17 @@ div.containerBlog {
 }
 
 div.main {
-  padding: 20px 0px 0px 0px;
+  padding: 0px 20px 20px 0px;
 }
 div.center {
  vertical-align: center;
  text-align: center;
 
+}
+
+div.well{
+  background-color: #fff;
+  border: none;
 }
 /* ADDING REACT ANIMATION CSS*/
 
@@ -166,10 +171,10 @@ div.center {
 }
 
 .curve { 
-  width: 33%; height: auto;
+  width: 15%; height: auto;
   min-width: 200px;
   float: left;
-  margin-right:9rem; 
+  margin:3rem; 
   border-radius: 50%;
   -webkit-shape-outside:circle();
   shape-outside:circle();
@@ -234,7 +239,7 @@ div.center {
 
  .navbar-custom {
   position: absolute;
-  top: 0;
+  top: 0px;
   left: 0;
   width: 100%;
   min-height: 75px;
@@ -338,7 +343,7 @@ div.center {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  margin-bottom: 0px;
+  margin-bottom: 50px;
 }
 .intro-header .site-heading,
 .intro-header .post-heading,
@@ -409,6 +414,27 @@ div.center {
   .intro-header .post-heading .subheading {
     font-size: 30px;
   }
+}
+ .footer {
+  position: relative;
+  bottom:0;
+  background-color: #808080;
+  background: no-repeat center center;
+  margin-bottom: 0px;
+}
+.footer .site-heading,
+.footer .post-heading,
+.footer .page-heading {
+  font-size: 18px;
+  line-height: 1.1;
+  text-shadow: 2px 2px 8px #000;
+  color: white;
+  display: block;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+/*  font-weight: 00;
+*/  margin: 50px 0 0;
+  padding:40px;
+  text-align: center;
 }
 
 hr.small {
