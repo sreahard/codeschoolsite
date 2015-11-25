@@ -1,6 +1,7 @@
 var React = require('react');
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
+
 var GitEventsList = React.createClass({
 
   getInitialState: function(){
@@ -29,7 +30,7 @@ var GitEventsList = React.createClass({
               var commitId = (c.url.slice(-41));
               var urlBase = (c.url.slice(0,8) + c.url.slice(12,22) + c.url.slice(28));
               var url = (urlBase.slice(0, -42) + commitId);
-              console.log(urlBase.slice(0, -42));
+              // console.log(urlBase.slice(0, -42));
               if (c.message.includes('README')) {
               return(
                 null

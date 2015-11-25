@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Gravatar = require('../render/renderGravatars')
+var BlogList = require('../render/blogList')
 
 var UserLoad = React.createClass({
 	getInitialState: function(){
@@ -38,4 +38,4 @@ var UserLoad = React.createClass({
 	}
 })
 
-ReactDOM.render(<UserLoad url="/api/v1/users"/>, document.getElementById("gravatars") );
+module.exports = UserLoad;

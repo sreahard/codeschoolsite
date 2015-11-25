@@ -5,12 +5,13 @@ var CommentForm = React.createClass({
     
     handleCommentSubmit: function(e){
         e.preventDefault();
-        var comment = this.refs.comment.getDOMNode().value;
-        if(!comment){
+        var comment = this.refs.comment.value;
+
+        if(!user){
             return;
         }
 
-        var data = ({ comment: comment });
+        var data = ({ comment: comment});
         var id = this.props.blogId;
         var that = this;
 
@@ -20,8 +21,10 @@ var CommentForm = React.createClass({
             data: data,
             type:'POST',
                 success: function(response){
-                console.log("posting data!",data, response)
-                // document.location='/blog'
+                 // if (user === undefined){
+                 //  alert('You must register to post comments')
+                 // } 
+                 console.log(data)
                 if(this.props.onPost){
                   this.props.onPost()
                 }
@@ -31,7 +34,7 @@ var CommentForm = React.createClass({
                     console.error( status, err.toString());
                 }.bind(this)
         })
-        this.refs.comment.getDOMNode().value = ''
+        this.refs.comment.value = ''
         
     },
     render: function() {

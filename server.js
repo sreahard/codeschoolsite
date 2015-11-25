@@ -9,6 +9,7 @@ var db = require('./models/dbs');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
+var react = require('express-react-views');
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -60,6 +61,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use(express.static('public'));
+
+app.engine('js', react.createEngine());
 
 app.set('view engine', 'ejs');
 // // required for passport

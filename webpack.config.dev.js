@@ -7,12 +7,17 @@ module.exports = {
 
     home: [
     'webpack-hot-middleware/client',
+    './client/homeApp'
+  ],
+    blog: [
+    'webpack-hot-middleware/client',
     './client/blogApp'
   ],
     blogForm: [
     'webpack-hot-middleware/client',
     './client/blogFormApp'
   ]
+
 },
 
   output: {

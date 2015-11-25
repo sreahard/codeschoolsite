@@ -3,9 +3,10 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var User = require('../models/user');
+  
 
 module.exports = function(app, passport) {
-
+    
 // normal routes ===============================================================
     app.get('/api/v1/users', function(req, res){
     mongoose.model('User').find({}, function(err, users){
@@ -40,12 +41,18 @@ module.exports = function(app, passport) {
             user : req.user
         });
     });
+    app.get('/blog', function(req, res) {
+      res.render('../client/blogList.js', {
+            user: req.user
+       });
+    });
 
-app.get('/login', function(req, res) {
+    app.get('/login', function(req, res) {
 
         // render the page and pass in any flash data if it exists
         res.render('login.ejs', { message: req.flash('loginMessage') });
     });
+
     app.get('/loginAdmin', function(req, res) {
 
         // render the page and pass in any flash data if it exists

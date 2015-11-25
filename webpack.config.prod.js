@@ -7,6 +7,10 @@ module.exports = {
 
     home: [
 
+    './client/homeApp'
+  ],
+    blog: [
+
     './client/blogApp'
   ],
     blogForm: [

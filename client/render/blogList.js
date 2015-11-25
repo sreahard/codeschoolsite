@@ -1,6 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var CommentForm = require('./commentForm');
+var BlogHeader = require('./blogHeader')
+
 
 
 var BlogList = React.createClass({
@@ -17,7 +19,6 @@ var BlogList = React.createClass({
           showing: !this.state.showing,
           fltr: blog
       })
-        console.log(blog)
     },
 
     reToggle: function (category) {
@@ -28,32 +29,7 @@ var BlogList = React.createClass({
 
 
 	render: function() {
-        var divImage = {
-                  backgroundImage: 'url("images/hp_header1.jpg")',
-            };
 
-        var blogHeader = this.props.data.map(function(blog){
-            
-            if (blog.title === "Why I am learning to code good and do other things good too.")
-
-            return (
-                <div className="intro-header" id="allBlogs" style={divImage}>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-12">
-                                <div className="site-heading">
-
-                                    <h1>I Code Good</h1>
-                                    <hr className="small"/>
-                                    <span className="subheading">and Do Other Stuff Good Too!</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                )
-        });
         var blogPostHeader = this.props.data.map(function(blog){
         
             var divImages = {
@@ -61,7 +37,7 @@ var BlogList = React.createClass({
                 }
 
             return (
-                <div className="intro-header" id="allBlogs" style={divImages}>
+                <div className="intro-header"  style={divImages}>
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12">
@@ -103,7 +79,6 @@ var BlogList = React.createClass({
 
 
             var comments = commentSort.reverse().map(function(comments){
-                console.log(comments.user)
                 if (comments.user != null) {
                 var hash = md5(comments.user.local.email);
                 var size = 60;
@@ -132,7 +107,6 @@ var BlogList = React.createClass({
                         <div className="container" id="oneBlog">
                             <div className="row">
                                 <div className="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-
                                 	<h1>{blog.title}</h1>
                                 	<p>by <strong>{blog.author}</strong> posted on <strong>{blogDate}</strong></p>
                                 	<hr/>
@@ -153,7 +127,7 @@ var BlogList = React.createClass({
 
                 return (
                     <div>
-                        <div className="intro-header" id="allBlogs" style={divImages}>
+                        <div className="intro-header" style={divImages}>
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-12">
@@ -172,7 +146,7 @@ var BlogList = React.createClass({
                                     <hr/>
                                     <div className = "blog" key="blogBody" dangerouslySetInnerHTML = {{__html: blog.body}}/>       
                                     <hr/>
-                                    <a href="#allBlogs"><h3 className="panel-header" onClick={that.reToggle}> Back</h3></a>
+                                    <a href="#top"><h3 className="panel-header" onClick={that.reToggle}> Back</h3></a>
 
                                     <div className="well">
                                         <h4>Leave a Comment:</h4>
@@ -191,7 +165,7 @@ var BlogList = React.createClass({
 
 			return (
 			<div> 
-             {this.state.fltr ? '' : blogHeader}
+             {this.state.fltr ? '' : <BlogHeader/>}
 			 {blogData}
 			</div>
 			);
@@ -199,6 +173,8 @@ var BlogList = React.createClass({
 });
 
 module.exports = BlogList;
+// module.exports = BlogHeader;
+
 
 
 

@@ -1,5 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var BlogHeader = require('./blogHeader')
 
 var BlogForm = React.createClass({
 
@@ -37,28 +38,31 @@ var BlogForm = React.createClass({
  render: function() {
 
    return (
-    <div>
-      <form>
-      <div className="form-group">
-        <label>Title</label>
-        <input type="text" className="form-control" ref="title" placeholder="title"/>
-      </div>
-      <div className="form-group">
-        <label>Author </label>
-        <input type="author" className="form-control" ref="author" placeholder="author"/>
-      </div>
-      <div className="form-group">
-        <label>Image </label>
-        <input type="input" className="form-control" ref="image" placeholder="image"/>
-      </div>
+      <div>
+        <BlogHeader/>
+        <div className="container">
+          <form>
+            <div className="form-group">
+              <label>Title</label>
+              <input type="text" className="form-control" ref="title" placeholder="title"/>
+            </div>
+            <div className="form-group">
+              <label>Author </label>
+              <input type="author" className="form-control" ref="author" placeholder="author"/>
+            </div>
+            <div className="form-group">
+              <label>Image </label>
+              <input type="input" className="form-control" ref="image" placeholder="image"/>
+            </div>
 
-      <div className="form-group">
-        <label>Post</label>
-        <textarea  rows="15" className="form-control" ref="body" placeholder="body"></textarea>
+            <div className="form-group">
+              <label>Post</label>
+              <textarea  rows="15" className="form-control" ref="body" placeholder="body"></textarea>
+            </div>
+            <button onClick={this.handleSubmit} type="submit" className="btn btn-default"> Submit </button>
+          </form>
+        </div>
       </div>
-      <button onClick={this.handleSubmit} type="submit" className="btn btn-default"> Submit </button>
-      </form>
-    </div>
     );
  }
 });

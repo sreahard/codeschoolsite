@@ -97,10 +97,64 @@ div.center {
 
 }
 
+div.center-dark {
+ vertical-align: center;
+ text-align: center;
+ background-color: black;
+ background-image: url("/images/footer.jpg");
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ background-size: cover;
+ -o-background-size: cover;
+ min-height: 160px;
+ padding:10px;
+}
+
+div.center-dark p {
+  color: white;
+}
+
 div.well{
   background-color: #fff;
   border: none;
+  box-shadow: none;
+
 }
+
+div.feedbox{
+  min-height: 350px;
+  padding: 19px;
+  background-color: rgba(255, 255, 255, .7);
+  border: none;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+div.bottom{
+  position: relative;
+  bottom: 0;
+ vertical-align: center;
+ text-align: center;
+ margin-top: 30px;
+ background-color: black;
+ background-image: url("/images/keyboard-light.jpg");
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ background-size: cover;
+ -o-background-size: cover;
+ padding: 30px;
+  }
+
+.foot {
+  position: relative;
+  bottom:0;
+  background-color: black;
+  background: no-repeat center center;
+  margin: 30px 10px;
+  opacity: .47;
+}
+
+
 /* ADDING REACT ANIMATION CSS*/
 
 .example-enter {
@@ -269,7 +323,6 @@ div.img-blog{
   text-transform: uppercase;
   letter-spacing: 1px;
   line-height: 1.2em;
-  max-width: 200px;
 }
 .navbar-custom .nav li a {
   text-transform: uppercase;
@@ -430,27 +483,7 @@ margin: auto;
     font-size: 30px;
   }
 }
- .footer {
-  position: relative;
-  bottom:0;
-  background-color: #808080;
-  background: no-repeat center center;
-  margin-bottom: 0px;
-}
-.footer .site-heading,
-.footer .post-heading,
-.footer .page-heading {
-  font-size: 18px;
-  line-height: 1.1;
-  text-shadow: 2px 2px 8px #000;
-  color: white;
-  display: block;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-/*  font-weight: 00;
-*/  margin: 50px 0 0;
-  padding:40px;
-  text-align: center;
-}
+
 
 hr.small {
   max-width: 100px;
