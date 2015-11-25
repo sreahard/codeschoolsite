@@ -29,11 +29,12 @@ var GitEventsList = React.createClass({
               var commitId = (c.url.slice(-41));
               var urlBase = (c.url.slice(0,8) + c.url.slice(12,22) + c.url.slice(28));
               var url = (urlBase.slice(0, -42) + commitId);
+              console.log(urlBase.slice(0, -42));
               if (c.message.includes('README')) {
               return(
                 null
                 )
-            } else {
+              } else {
               return(
                 <p className="panel-header"><i className="fa fa-code-fork"></i><a href={url} target="_blank"> {c.message}</a></p>
                 )

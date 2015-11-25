@@ -23,13 +23,13 @@ module.exports = function(app, passport){
     var title = req.body.title;
     var body = req.body.body;
     var author = req.body.author;
-    var image = req.body.image;
+    var img = req.body.img;
 
    mongoose.model('Blog').create({
       title: title,
       body: body,
       author: author,
-      image: image
+      img: img
     },
    function(err, blogPost){
      if(err){

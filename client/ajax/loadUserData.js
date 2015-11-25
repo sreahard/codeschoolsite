@@ -32,7 +32,7 @@ var UserLoad = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<Gravatar data={this.state.data}/>
+				<BlogList user={this.state.data}/>
 			</div>
 			)
 	}
