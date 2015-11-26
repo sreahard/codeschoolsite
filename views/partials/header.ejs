@@ -18,20 +18,20 @@
 					<% if (!user) { %> 
 						<li><a href="/blog"><h3>Blog</h3></a></li>
 						<li><a href="/"><h3>About</h3></a></li>
-						<li><a href="/contact"><h3>Contact</h3></a></li>
-
+<!-- 						<li><a href="/contact"><h3>Contact</h3></a></li>
+ -->
 					<%} else if (user.local.email === "work@damn.it"){ %>
 						<li><a href="/blog"><h3>Blog</h3></a></li>
 						<li><a href="/post_blog"><h3>Post Blog</h3></a></li>
 						<li><a href="/"><h3>About</h3></a></li>
-						<li><a href="/contact"><h3>Contact</h3></a></li>
-						<li><a href="/logout"><h3>Log Out</h3></a></li>
+<!-- 						<li><a href="/contact"><h3>Contact</h3></a></li>
+ -->						<li><a href="/logout"><h3>Log Out</h3></a></li>
 
 					<%} else { %>
 						<li><a href="/blog"><h3>Blog</h3></a></li>
 						<li><a href="/"><h3>About</h3></a></li>
-						<li><a href="/contact"><h3>Contact</h3></a></li>
-						<li><a href="/logout"><h3>Log Out</h3></a></li>
+<!-- 						<li><a href="/contact"><h3>Contact</h3></a></li>
+ -->						<li><a href="/logout"><h3>Log Out</h3></a></li>
 					<% } %>
 
 				</ul>

@@ -267,6 +267,142 @@ var blog = [
   }
 ]
 
+var tweets = [
+{
+    "created_at": "Tue Nov 24 21:38:14 +0000 2015",
+    "id": 669268813578309600,
+    "id_str": "669268813578309632",
+    "text": "join us in welcoming @_cdro, @jain_chirag04, @satya164 &amp; @skevy as community collaborators on React Native! look out, 841 issues. err.. 843.",
+    "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+    "truncated": false,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 1566463268,
+      "id_str": "1566463268",
+      "name": "React",
+      "screen_name": "reactjs",
+      "location": "",
+      "description": "A JavaScript Library for Building User Interfaces",
+      "url": "http://t.co/EF5xem8t5W",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "http://t.co/EF5xem8t5W",
+              "expanded_url": "http://facebook.github.io/react/",
+              "display_url": "facebook.github.io/react/",
+              "indices": [
+                0,
+                22
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 49093,
+      "friends_count": 161,
+      "listed_count": 1251,
+      "created_at": "Wed Jul 03 18:58:09 +0000 2013",
+      "favourites_count": 2111,
+      "utc_offset": -28800,
+      "time_zone": "Pacific Time (US & Canada)",
+      "geo_enabled": false,
+      "verified": false,
+      "statuses_count": 1052,
+      "lang": "en",
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "C0DEED",
+      "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/446356636710363136/OYIaJ1KK_normal.png",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/446356636710363136/OYIaJ1KK_normal.png",
+      "profile_link_color": "0084B4",
+      "profile_sidebar_border_color": "C0DEED",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "has_extended_profile": false,
+      "default_profile": true,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 17,
+    "favorite_count": 43,
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [
+        {
+          "screen_name": "_cdro",
+          "name": "Christopher Dro",
+          "id": 3215407774,
+          "id_str": "3215407774",
+          "indices": [
+            21,
+            27
+          ]
+        },
+        {
+          "screen_name": "jain_chirag04",
+          "name": "chirag",
+          "id": 108044466,
+          "id_str": "108044466",
+          "indices": [
+            29,
+            43
+          ]
+        },
+        {
+          "screen_name": "satya164",
+          "name": "Satyajit Sahoo",
+          "id": 114329017,
+          "id_str": "114329017",
+          "indices": [
+            45,
+            54
+          ]
+        },
+        {
+          "screen_name": "skevy",
+          "name": "Adam Miskiewicz",
+          "id": 15002220,
+          "id_str": "15002220",
+          "indices": [
+            61,
+            67
+          ]
+        }
+      ],
+      "urls": []
+    },
+    "favorited": false,
+    "retweeted": false,
+    "lang": "en"
+  },
+  ]
+  var avatar = tweets.map(function(t){
+    console.log(t.user.profile_background_image_url_https)
+
+  })
+
 // var comments = 
 // for (var i = 0; 
 

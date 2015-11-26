@@ -7,7 +7,7 @@ var CommentForm = React.createClass({
         e.preventDefault();
         var comment = this.refs.comment.value;
 
-        if(!user){
+        if(!comment){
             return;
         }
 
@@ -21,10 +21,6 @@ var CommentForm = React.createClass({
             data: data,
             type:'POST',
                 success: function(response){
-                 // if (user === undefined){
-                 //  alert('You must register to post comments')
-                 // } 
-                 console.log(data)
                 if(this.props.onPost){
                   this.props.onPost()
                 }

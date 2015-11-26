@@ -49,6 +49,13 @@ a:active {
   color: rgb(14, 122, 146);
   text-decoration: none;
 }
+
+p.small {
+  color: rgba(14, 122, 146, 0.5);
+}
+p.tweet {
+  text-align: left;
+}
 blockquote {
   font-family: "Open Sans",Helvetica,Arial,sans-serif;
   background: rgba(255,255,255, .6);
@@ -89,7 +96,7 @@ div.blog {
   letter-spacing: 1.2;
 }
 div.main {
-  padding: 0px 20px 20px 0px;
+  padding: 0px 20px, 20px, 20px;
 }
 div.center {
  vertical-align: center;
@@ -122,12 +129,17 @@ div.well{
 }
 
 div.feedbox{
-  min-height: 350px;
+  height: 350px;
   padding: 19px;
+  margin: 15px;
   background-color: rgba(255, 255, 255, .7);
   border: none;
   border-radius: 4px;
   box-shadow: none;
+}
+div.scroll {
+  max-height: 285px;
+  overflow: scroll;
 }
 
 div.bottom{
@@ -161,6 +173,8 @@ div.bottom{
   opacity: 0;
   transform:   translate(0, -100px);
   transform: translate3d(0, -100px, 10px);
+  -webkit-transform: rotatey(-180deg);
+
 
 }
 
@@ -186,6 +200,7 @@ div.bottom{
   opacity: 0;
   transform:   translate(0, -50px);
   transform: translate3d(0, -50px, 20px);
+  -webkit-transform: rotatey(-180deg);
 }
 
 .titles-enter {
@@ -237,7 +252,15 @@ div.img-blog{
   display:block;
   overflow:hidden;
 }
-.curve { 
+.curve {     
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%; height: auto;
+  border-radius: 50%;
+}
+@media only screen and (min-width: 768px) {
+  .curve {
   width: 15%; height: auto;
   min-width: 200px;
   float: left;
@@ -245,8 +268,15 @@ div.img-blog{
   border-radius: 50%;
   -webkit-shape-outside:circle();
   shape-outside:circle();
+  }
 }
 
+.img-tweet {
+  border-radius: 4px;
+  max-height: 30px;
+  float:left;
+  margin-right: 15px;
+}
 .img-circle-xs {
   border-radius: 50%;
   max-height: 60px;

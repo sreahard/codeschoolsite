@@ -46,7 +46,7 @@ var GitEventsList = React.createClass({
       if (e.repo === this.state.fltr && shouldShow)
         return(
           <div>
-           {commitMessages} 
+                {commitMessages}
           </div>
           )
     }.bind(this));
@@ -61,21 +61,26 @@ var GitEventsList = React.createClass({
     var repoButtons = repoNames.map(function(repo, showing){
       var repoNamesRendered = (repo.charAt(9).toUpperCase() + repo.slice(10))
       return (
-        <div>
-            <h3 className="panel-header" onClick={that.toggle.bind(that, repo)}>
-            <i className="fa fa-github"></i>
-             {repoNamesRendered}</h3>
-        </div>
+              <a><h3 className="panel-header" onClick={that.toggle.bind(that, repo)}>
+              <i className="fa fa-github"></i> {repoNamesRendered}</h3></a>
+
         )
     });
 
     return (
-      <div>
+      <div className="col-md-3">
+        <div className="feedbox">
+          <h4>Github Repositories</h4>
+          <div className="row scroll">
+            <div className="col-lg-12">
+
         {repoButtons}
         <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
            {gitEvents}
         </ReactCSSTransitionGroup>
-
+                            </div>
+          </div>
+        </div>
       </div>
       );
 

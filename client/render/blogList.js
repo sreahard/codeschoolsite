@@ -82,7 +82,7 @@ var BlogList = React.createClass({
                 if (comments.user != null) {
                 var hash = md5(comments.user.local.email);
                 var size = 60;
-                var genericAvatar = 'https://scontent-ord1-1.xx.fbcdn.net/hphotos-xaf1/t39.1997-6/p118x90/851586_392309744199671_988013196_n.png';
+                var genericAvatar = 'http://reahard.rocks/images/bit-me.jpg';
 
                 var url = 'http://gravatar.com/avatar/' + hash + "?s=" + size + "&d=" + genericAvatar;
                 
@@ -113,9 +113,6 @@ var BlogList = React.createClass({
                         			<div className = "blog" key="blogBody" dangerouslySetInnerHTML = {{__html: getExerpt}}/> 
                                     <a href="#allBlogs"><h3 className="panel-header" onClick={that.toggleBlog.bind(that, blog._id)} > Read More</h3></a>
                                 <hr/>
-                                <button type="button" className="btn btn-danger btn-md" data-toggle="modal" data-target="#myModal">
-                                    Post Blog
-                                </button>
 
                                  </div>
                             </div>
@@ -147,10 +144,20 @@ var BlogList = React.createClass({
                                     <div className = "blog" key="blogBody" dangerouslySetInnerHTML = {{__html: blog.body}}/>       
                                     <hr/>
                                     <a href="#top"><h3 className="panel-header" onClick={that.reToggle}> Back</h3></a>
-
+                                      <br/>
+                                                                              <h4>You must be signed in to leave a comment.</h4>
+<button type="button" className="btn btn-danger btn-md" data-toggle="modal" data-target="#logIn">
+                                            Login 
+                                        </button> &nbsp;&nbsp;
+                                        <button type="button" className="btn btn-warning btn-md" data-toggle="modal" data-target="#signUp">
+                                            Sign Up
+                                        </button>
                                     <div className="well">
+  
+
                                         <h4>Leave a Comment:</h4>
                                         <CommentForm blogId={blog._id} onPost={that.props.newData}/>
+
                                     </div>
                                     <div>
                                         {comments}
@@ -167,6 +174,17 @@ var BlogList = React.createClass({
 			<div> 
              {this.state.fltr ? '' : <BlogHeader/>}
 			 {blogData}
+             <div className="container" id="oneBlog">
+                            <div className="row">
+                                <div className="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+             <button type="button" className="btn btn-danger btn-md" data-toggle="modal" data-target="#myModal">
+                Post Blog
+            </button>
+            <br/>
+            <br/>
+            </div>
+            </div>
+            </div>
 			</div>
 			);
 	}

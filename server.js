@@ -20,6 +20,11 @@ var commentModel = require('./models/comment');
 var contactModel = require('./models/contact');
 
 
+require('dotenv').load();
+var Twit = require('twit');
+var axios = require('axios');
+var _ = require('lodash');
+
 app.set('port', (process.env.PORT || 4000));
 
 require('./config/passport')(passport); // pass passport for configuration
@@ -76,13 +81,65 @@ require('./routes/userRoutes')(app, passport);
 require('./routes/blogRoutes')(app, passport);
 // require('./routes/commentRoutes')(app, passport);
 
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
+app.options("*", function(req, res) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+});
+
+
+var T = new Twit({
+  consumer_key:process.env.CONSUMER_KEY,
+  consumer_secret:process.env.CONSUMER_SECRET,
+  access_token: process.env.ACCESS_TOKEN,
+  access_token_secret:process.env.ACCESS_TOKEN_SECRET
+});
+
+var fetchTweets = function(req, res){
+  var twitterHandle = req.params.twitterHandle;
+
+T.get('statuses/user_timeline', { screen_name: twitterHandle, count:10 },  function (err, data, response) {
+  res.send(data)
+});
+
+};
+
+var searchTweets = function(req, res){
+  var query = req.params.query;
+
+    T.get('search/tweets', { q: query, result_type: "popular", count:10 },  
+        function (err, data, response){
+            var justTweets = [];
+            var searchArray = data.statuses;
+            searchArray.forEach(function(status){
+                justTweets.push(status.text);
+            })
+            res.send(justTweets);
+        });
+};
+
+
+
 
 var contactRoutes = require('./routes/contactRoutes');
 var gitHubRoutes = require('./routes/gitHubRoutes');
 
 
+
 app.use('/api/v1/github', gitHubRoutes);
 app.use('/api/v1/blogContact', contactRoutes);
+app.use('/api/twitter/search/:query', searchTweets);
+app.use('/api/twitter/handle/:twitterHandle', fetchTweets);
+
 
 // app.get('/', function(req, res){
 // 	res.render('./pages/index.ejs')
