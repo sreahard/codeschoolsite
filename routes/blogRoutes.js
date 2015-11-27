@@ -41,6 +41,27 @@ module.exports = function(app, passport){
    });
  });
 
+
+app.get('/api/v1/blogPosts/user', function(req, res) {
+
+    if (req.user) {
+      console.log(req.user)
+      mongoose.model('User').findById({
+          _id: req.user._id
+        },
+        function(err, user) {
+          if (err) {
+            return console.log(err);
+          } else {
+            res.json(user)
+          }
+        });
+    } else {
+      res.json({
+        user: "anonymous"
+      })
+    }
+})
   app.get('/api/v1/blogPosts/:id', function(req, res){
     mongoose.model('Blog').findById({
       _id: req.params.id 

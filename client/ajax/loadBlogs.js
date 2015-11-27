@@ -6,7 +6,7 @@ var BlogList = require('../render/blogList');
 var BlogLoad = React.createClass({
 
 	getInitialState: function(){
-	return {data: []};
+	return {data: [], user: []};
 },
 
 	loadBlogPosts: function(blog) {

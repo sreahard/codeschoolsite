@@ -10,10 +10,28 @@ var BlogList = React.createClass({
     getInitialState: function(){
         return {
           showing: false,
-          fltr: null
+          fltr: null,
+          user: []
       };
     },
+    loadUser: function() {
+    $.ajax({
+      url: '/api/v1/blogPosts/user',
+      dataType: 'json',
+      cache: false,
+      success: function(user) {
+        // console.log("USER IN AJAX", user)
+        this.setState({user: user});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(status, err.toString());
+      }.bind(this)
+    });
+  },
 
+  componentDidMount: function(){
+    this.loadUser();
+  },
     toggleBlog: function (blog) {
         this.setState({
           showing: !this.state.showing,
@@ -29,6 +47,14 @@ var BlogList = React.createClass({
 
 
 	render: function() {
+       console.log(this.state.user.user)         
+     // if(this.state.user.local){
+
+     //    var user = this.state.user.local.email
+     //  } else {
+     //    var user = "NO USER SIGNED IN"
+     //  }
+     //  console.log("USER INSIDE RENDER LIST", user);
 
         var blogPostHeader = this.props.data.map(function(blog){
         
@@ -120,7 +146,7 @@ var BlogList = React.createClass({
                     </div>
             	) 
 
-            } else if (blog._id === this.state.fltr) {
+            } else if (blog._id === this.state.fltr && this.state.user.user != "anonymous") {
 
                 return (
                     <div>
@@ -145,13 +171,6 @@ var BlogList = React.createClass({
                                     <hr/>
                                     <a href="#top"><h3 className="panel-header" onClick={that.reToggle}> Back</h3></a>
                                       <br/>
-                                                                              <h4>You must be signed in to leave a comment.</h4>
-<button type="button" className="btn btn-danger btn-md" data-toggle="modal" data-target="#logIn">
-                                            Login 
-                                        </button> &nbsp;&nbsp;
-                                        <button type="button" className="btn btn-warning btn-md" data-toggle="modal" data-target="#signUp">
-                                            Sign Up
-                                        </button>
                                     <div className="well">
   
 
@@ -167,6 +186,50 @@ var BlogList = React.createClass({
                         </div>
                     </div>
                 ) 
+            } else if (blog._id === this.state.fltr && this.state.user.user === "anonymous") {
+
+                return (
+                    <div>
+                        <div className="intro-header" style={divImages}>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-lg-12">
+                                        <div className="site-heading">
+
+                                            <h1>{blog.title}</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="container" id="oneBlog">
+                            <div className="row">
+                                <div className="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                                    <p> by <strong>{blog.author}</strong> posted on <strong>{blogDate}</strong></p>
+                                    <hr/>
+                                    <div className = "blog" key="blogBody" dangerouslySetInnerHTML = {{__html: blog.body}}/>       
+                                    <hr/>
+                                    <a href="#top"><h3 className="panel-header" onClick={that.reToggle}> Back</h3></a>
+                                      <br/>
+                                    <div className="well comments">
+
+                                        {comments}
+                                    </div>
+
+                                    <h3>Join the conversation!</h3><br/>
+                                        <button type="button" className="btn btn-danger btn-md" data-toggle="modal" data-target="#logIn">
+                                            Login 
+                                        </button> &nbsp;&nbsp;
+                                        <button type="button" className="btn btn-warning btn-md" data-toggle="modal" data-target="#signUp">
+                                            Sign Up
+                                        </button>
+                                        <br/>
+                                        <br/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ) 
             }
         }.bind(this));
 
@@ -174,17 +237,6 @@ var BlogList = React.createClass({
 			<div> 
              {this.state.fltr ? '' : <BlogHeader/>}
 			 {blogData}
-             <div className="container" id="oneBlog">
-                            <div className="row">
-                                <div className="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-             <button type="button" className="btn btn-danger btn-md" data-toggle="modal" data-target="#myModal">
-                Post Blog
-            </button>
-            <br/>
-            <br/>
-            </div>
-            </div>
-            </div>
 			</div>
 			);
 	}

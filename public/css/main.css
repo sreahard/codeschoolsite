@@ -142,6 +142,12 @@ div.scroll {
   overflow: scroll;
 }
 
+div.comments {
+  max-height: 440px;
+  overflow: scroll;
+}
+
+
 div.bottom{
   position: relative;
   bottom: 0;

@@ -133,6 +133,7 @@ var searchTweets = function(req, res){
 var contactRoutes = require('./routes/contactRoutes');
 var gitHubRoutes = require('./routes/gitHubRoutes');
 
+require('./routes/userRoutes.js')(app, passport);
 
 
 app.use('/api/v1/github', gitHubRoutes);
