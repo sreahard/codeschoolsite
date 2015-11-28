@@ -8,15 +8,6 @@ var User = require('../models/user');
 module.exports = function(app, passport) {
     
 // normal routes ===============================================================
-    app.get('/api/v1/users', function(req, res){
-    mongoose.model('User').find({}, function(err, users){
-     if(err){
-       return console.log('err');
-     } else {
-       res.json(users);
-     }
-   });
- });
     // show the pages that use user refs (will also have our login links)
     app.get('/', function(req, res) {
         res.render('./pages/index.ejs', {
@@ -40,11 +31,6 @@ module.exports = function(app, passport) {
         res.render('./pages/rendered_blog.ejs', {
             user : req.user
         });
-    });
-    app.get('/blog', function(req, res) {
-      res.render('../client/blogList.js', {
-            user: req.user
-       });
     });
 
     app.get('/login', function(req, res) {
@@ -136,7 +122,7 @@ module.exports = function(app, passport) {
 
     app.get('/auth/github', passport.authenticate('github'));
 
-    // handle the callback after twitter has authenticated the user
+    // handle the callback after github has authenticated the user
     app.get('/auth/github/callback',
         passport.authenticate('github', {
             successRedirect : '/blog',
@@ -189,6 +175,19 @@ module.exports = function(app, passport) {
                 successRedirect : '/blog',
                 failureRedirect : '/'
             }));
+    // github --------------------------------
+
+        // send to github to do the authentication
+
+        app.get('/connect/github', passport.authorize('github', { scope : 'email' }));
+
+        // handle the callback after github has authorized the user
+        app.get('/connect/github/callback',
+            passport.authorize('github', {
+                successRedirect : '/blog',
+                failureRedirect : '/'
+            }));
+
 
         // local -----------------------------------
     app.get('/unlink/local', function(req, res) {
@@ -217,6 +216,15 @@ module.exports = function(app, passport) {
            res.redirect('/profile');
         });
     });
+
+    app.get('/unlink/twitter', function(req, res) {
+        var user           = req.user;
+        user.twitter.token = undefined;
+        user.save(function(err) {
+           res.redirect('/profile');
+        });
+    });
+
 
     
     //route middleware to make sure a user is logged in

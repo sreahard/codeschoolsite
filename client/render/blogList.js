@@ -47,14 +47,6 @@ var BlogList = React.createClass({
 
 
 	render: function() {
-       console.log(this.state.user.user)         
-     // if(this.state.user.local){
-
-     //    var user = this.state.user.local.email
-     //  } else {
-     //    var user = "NO USER SIGNED IN"
-     //  }
-     //  console.log("USER INSIDE RENDER LIST", user);
 
         var blogPostHeader = this.props.data.map(function(blog){
         
@@ -78,8 +70,6 @@ var BlogList = React.createClass({
 
                 )
         });
-
-
 
         var that = this;
 
@@ -105,13 +95,36 @@ var BlogList = React.createClass({
 
 
             var comments = commentSort.reverse().map(function(comments){
-                if (comments.user != null) {
-                var hash = md5(comments.user.local.email);
-                var size = 60;
-                var genericAvatar = 'http://reahard.rocks/images/bit-me.jpg';
-
-                var url = 'http://gravatar.com/avatar/' + hash + "?s=" + size + "&d=" + genericAvatar;
                 
+                // if (comments.user.github != undefined){
+                //     var githubAvatar = ("https://avatars.githubusercontent.com/u/" + comments.user.github.id)
+                // } else {
+                //     var githubAvatar = null
+                // }
+
+                // if (comments.user.facebook != undefined){
+                //     var facebookAvatar = ("http://graph.facbook.com/" + comments.facebook.id + "/picture?type=square")
+                // } else {
+                //     var facebookAvatar = null
+                //     }
+
+                if (comments.user != null) {
+                   if (comments.user.local != null) {
+                        var hash = md5(comments.user.local.email);
+                        var size = 60;
+                        var genericAvatar = 'http://reahard.rocks/images/bit-me.jpg';
+                        var url = 'http://gravatar.com/avatar/' + hash + "?s=" + size + "&d=" + genericAvatar;
+                    console.log(comments.user.local)
+                    } else if (comments.user.github != null) {
+                        
+                        var url = "https://avatars.githubusercontent.com/u/" + comments.user.github.id;
+                    console.log(comments.user.github)
+                    } else if (comments.user.facebook != null) {
+                        console.log(comments.user.facebook.id)
+                        var url = "http://graph.facbook.com/" + comments.user.facebook.id + "/picture?type=square";
+                    } else if (comments.user.twitter != null) {
+                        var url = "https://twitter.com/" + comments.user.twitter.username + "/profile_image?size=original";
+                    }
                 var commentDate = new Date(comments.date).toDateString();
                 return (
                     <div className="containerBlog">

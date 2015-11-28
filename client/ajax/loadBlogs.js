@@ -40,7 +40,7 @@ var BlogLoad = React.createClass({
 
 		return (
 			<div>
-				<BlogList data={this.state.data} newData={doRefresh}/>
+				<BlogList user={this.state.user} data={this.state.data} newData={doRefresh}/>
 			</div>
 			)
 	}

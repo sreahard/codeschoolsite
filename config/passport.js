@@ -219,7 +219,7 @@ passport.use(new GitHubStrategy({
                 if (user) {
                     if (!user.github.token) {
                         user.github.token = token;
-                        user.github.name  = profile.name.givenName + ' ' + profile.name.familyName;
+                        user.github.name  = profile.username;
                         user.github.email = profile.emails[0].value;
                         user.save(function(err) {
                             if (err)
@@ -235,7 +235,7 @@ passport.use(new GitHubStrategy({
                     // set all of the github information in our user model
                     newUser.github.id    = profile.id; // set the users github id                   
                     newUser.github.token = token; // we will save the token that github provides to the user                    
-                    newUser.github.name  = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
+                    newUser.github.name  = profile.username; // look at the passport user profile to see how names are returned
                     newUser.github.email = profile.emails[0].value; // github can return multiple emails so we'll take the first
 
                     // save our user to the database
@@ -257,7 +257,7 @@ passport.use(new GitHubStrategy({
                 // update the current users github credentials
                 user.github.id    = profile.id;
                 user.github.token = token;
-                user.github.name  = profile.name.givenName + ' ' + profile.name.familyName;
+                user.github.name  = profile.username;
                 user.github.email = profile.emails[0].value;
 
                 // save the user
@@ -281,7 +281,8 @@ passport.use(new GitHubStrategy({
         callbackURL     : configAuth.twitterAuth.callbackURL,
         passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
 
-    },
+    }, 
+
     function(req, token, tokenSecret, profile, done) {
 
         // make the code asynchronous

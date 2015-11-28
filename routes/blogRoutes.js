@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 module.exports = function(app, passport){
   app.get('/api/v1/blogPosts', function(req, res){
     mongoose.model('Blog').find({})
-    .populate({ path:'comments', populate:{path:'user', select:'local.email'}})
+    .populate({ path:'comments', populate:{path:'user'}})
     .exec(function(err, comments) {
       if(err)
         res.send(err)
