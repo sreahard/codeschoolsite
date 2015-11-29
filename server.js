@@ -18,6 +18,8 @@ var session      = require('express-session');
 var blogModel = require('./models/blog');
 var commentModel = require('./models/comment');
 var contactModel = require('./models/contact');
+var stackModel = require('./models/stack');
+var projectsModel = require('./models/projects');
 
 
 require('dotenv').load();
@@ -132,12 +134,17 @@ var searchTweets = function(req, res){
 
 var contactRoutes = require('./routes/contactRoutes');
 var gitHubRoutes = require('./routes/gitHubRoutes');
+var stackRoutes = require('./routes/stackRoutes');
+var projectRoutes = require('./routes/projectRoutes');
+
 
 require('./routes/userRoutes.js')(app, passport);
 
 
 app.use('/api/v1/github', gitHubRoutes);
 app.use('/api/v1/blogContact', contactRoutes);
+app.use('/api/v1/stack', stackRoutes);
+app.use('/api/v1/projects', projectRoutes);
 app.use('/api/twitter/search/:query', searchTweets);
 app.use('/api/twitter/handle/:twitterHandle', fetchTweets);
 

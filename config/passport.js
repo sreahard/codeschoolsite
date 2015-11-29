@@ -139,7 +139,7 @@ function(req, token, refreshToken, profile, done) {
                 if (user) {
                     if (!user.facebook.token) {
                         user.facebook.token = token;
-                        user.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
+                        user.facebook.name  = profile.displayName;
                         user.facebook.email = profile.emails[0].value;
                         user.save(function(err) {
                             if (err)
@@ -155,7 +155,7 @@ function(req, token, refreshToken, profile, done) {
                     // set all of the facebook information in our user model
                     newUser.facebook.id    = profile.id; // set the users facebook id                   
                     newUser.facebook.token = token; // we will save the token that facebook provides to the user                    
-                    newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
+                    newUser.facebook.name  = profile.displayName; // look at the passport user profile to see how names are returned
                     newUser.facebook.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
 
                     // save our user to the database
@@ -177,7 +177,7 @@ function(req, token, refreshToken, profile, done) {
                 // update the current users facebook credentials
                 user.facebook.id    = profile.id;
                 user.facebook.token = token;
-                user.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
+                user.facebook.name  = profile.displayName;
                 user.facebook.email = profile.emails[0].value;
 
                 // save the user

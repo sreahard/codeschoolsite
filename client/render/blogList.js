@@ -96,42 +96,41 @@ var BlogList = React.createClass({
 
             var comments = commentSort.reverse().map(function(comments){
                 
-                // if (comments.user.github != undefined){
-                //     var githubAvatar = ("https://avatars.githubusercontent.com/u/" + comments.user.github.id)
-                // } else {
-                //     var githubAvatar = null
-                // }
-
-                // if (comments.user.facebook != undefined){
-                //     var facebookAvatar = ("http://graph.facbook.com/" + comments.facebook.id + "/picture?type=square")
-                // } else {
-                //     var facebookAvatar = null
-                //     }
+            // Get user avatars from various user routes 
 
                 if (comments.user != null) {
                    if (comments.user.local != null) {
+
                         var hash = md5(comments.user.local.email);
                         var size = 60;
                         var genericAvatar = 'http://reahard.rocks/images/bit-me.jpg';
                         var url = 'http://gravatar.com/avatar/' + hash + "?s=" + size + "&d=" + genericAvatar;
-                    console.log(comments.user.local)
+                        var username = comments.user.local.username
+
                     } else if (comments.user.github != null) {
                         
                         var url = "https://avatars.githubusercontent.com/u/" + comments.user.github.id;
-                    console.log(comments.user.github)
+                        var username = comments.user.github.name
+
                     } else if (comments.user.facebook != null) {
-                        console.log(comments.user.facebook.id)
+                        
                         var url = "http://graph.facbook.com/" + comments.user.facebook.id + "/picture?type=square";
+                        var username = comments.user.facebook.name
+
                     } else if (comments.user.twitter != null) {
+                    
                         var url = "https://twitter.com/" + comments.user.twitter.username + "/profile_image?size=original";
+                        var username = comments.user.twitter.username
                     }
+                
                 var commentDate = new Date(comments.date).toDateString();
+                
                 return (
                     <div className="containerBlog">
                         <div className="row">
                             <img className="img-circle-xs" src={url}/>
-                            <p><strong>{comments.comment}</strong></p>
-                            <p><span className="glyphicon glyphicon-time"></span> {commentDate}</p>
+                            <p><i>{comments.comment}</i></p>
+                            <p>{username != null ? "Posted by " + username + " on " : "Posted on "} {commentDate} </p>
                             <hr/>
                         </div>
                     </div>
@@ -139,6 +138,7 @@ var BlogList = React.createClass({
                     }
                 }.bind(this));
 
+            // Load blog exerpts on page load//
 
             if (!this.state.fltr) {
                 return (
@@ -158,7 +158,7 @@ var BlogList = React.createClass({
                         </div>
                     </div>
             	) 
-
+            //Load full blog post for logged out users // 
             } else if (blog._id === this.state.fltr && this.state.user.user != "anonymous") {
 
                 return (
@@ -199,6 +199,7 @@ var BlogList = React.createClass({
                         </div>
                     </div>
                 ) 
+            //Load full blog post with comment form for logged in users //
             } else if (blog._id === this.state.fltr && this.state.user.user === "anonymous") {
 
                 return (

@@ -1,8 +1,4 @@
-/*body {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-*/body {
+body {
     font-family: "Open Sans",Helvetica,Arial,sans-serif;
     line-height: 1.42857143;
     color: #333;
@@ -29,7 +25,7 @@ h2 {
 h3 {
     font-family: "Oswald",Helvetica,Arial,sans-serif;
     font-size: 20px;
-    line-height: .15;
+    line-height: 1.15;
 }
 
 a {
@@ -131,7 +127,7 @@ div.well{
 div.feedbox{
   height: 350px;
   padding: 19px;
-  margin: 15px;
+  margin: 15px 0;
   background-color: rgba(255, 255, 255, .7);
   border: none;
   border-radius: 4px;
@@ -162,6 +158,12 @@ div.bottom{
  -o-background-size: cover;
  padding: 30px;
   }
+
+iframe {
+  width:100%;
+  min-height: 450px;
+  border: none;
+}
 
 .foot {
   position: relative;

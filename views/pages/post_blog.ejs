@@ -8,14 +8,19 @@
 	<% include ../partials/header %>
 		<% if (user.local.email === "work@damn.it") { %>
 		<div id="blogForm"></div>
+		<div class="container">
+		<div id ="stackForm"></div>
+		<br>
+		<br>
+		<div id ="projectForm"></div>
+		<br>
+		<br>
+
+		</div>
 		<% } else { %>
 		<div class="container">
 			<div class="jumbotron alert">
-				<h1><i class="fa fa-sign-in"></i></h1>
-				<h2>You must be logged-in as the Tap Room's Owner to view this page.</h2></br>
-				<ul class="list-unstyled">
-					<li>  <a><button type="button" class="btn-menu" data-toggle="modal" data-target="#loginAdminModal">Login</button></a></li>
-				</ul>
+				<h2>Only invited guest bloggers and the blog owner may post a blog.</h2></br>
 			</div>
 		</div>
 		<% } %>	</div>

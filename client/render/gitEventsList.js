@@ -68,7 +68,7 @@ var GitEventsList = React.createClass({
     });
 
     return (
-      <div className="col-md-4">
+      <div className="col-md-3">
         <div className="feedbox">
           <h4>Github Repositories</h4>
           <div className="row scroll">
