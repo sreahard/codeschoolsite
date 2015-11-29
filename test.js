@@ -1,3 +1,10 @@
+var configAuth = require('./config/auth');
+
+console.log(configAuth.githubAuth.clientID);
+console.log(configAuth.githubAuth.clientSecret);
+console.log(configAuth.githubAuth.callbackURL);
+
+
 var users = [
   {
     "_id": "56323ae57f550462684410dc",
@@ -398,10 +405,10 @@ var tweets = [
     "lang": "en"
   },
   ]
-  var avatar = tweets.map(function(t){
-    console.log(t.user.profile_background_image_url_https)
+  // var avatar = tweets.map(function(t){
+  //   console.log(t.user.profile_background_image_url_https)
 
-  })
+  // })
 
 // var comments = 
 // for (var i = 0; 

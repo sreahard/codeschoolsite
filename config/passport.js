@@ -196,9 +196,9 @@ function(req, token, refreshToken, profile, done) {
     // =========================================================================
 
 passport.use(new GitHubStrategy({
-    clientID: 'd4e40726689afe35e13d',
-    clientSecret: '2bc32c469c5f4810bee357882c4a4ba8f77df2f2',
-    callbackURL: 'http://localhost:4000/auth/github/callback'
+    clientID: configAuth.githubAuth.clientID,
+    clientSecret: configAuth.githubAuth.clientSecret,
+    callbackURL: configAuth.githubAuth.callbackURL
   },
   function(req, token, refreshToken, profile, done) {
 

@@ -20,7 +20,7 @@ var userSchema = mongoose.Schema({
         email        : String,
         name         : String
     },
-    github         : {
+    github           : {
         id           : String,
         token        : String,
         email        : String,
