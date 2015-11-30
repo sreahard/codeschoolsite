@@ -231,11 +231,11 @@ var BlogList = React.createClass({
                                     </div>
 
                                     <h3>Join the conversation!</h3><br/>
-                                        <button type="button" className="btn btn-danger btn-md" data-toggle="modal" data-target="#logIn">
-                                            Login 
+                                        <button type="button" className="btn btn-social btn-local btn-md" data-toggle="modal" data-target="#logIn">
+                                            <i className="fa fa-sign-in"></i>Login 
                                         </button> &nbsp;&nbsp;
-                                        <button type="button" className="btn btn-warning btn-md" data-toggle="modal" data-target="#signUp">
-                                            Sign Up
+                                        <button type="button" className="btn btn-social btn-twitter btn-md" data-toggle="modal" data-target="#signUp">
+                                            <i className="fa fa-sign-in"></i>Sign Up
                                         </button>
                                         <br/>
                                         <br/>
