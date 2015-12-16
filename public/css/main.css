@@ -132,10 +132,13 @@ div.feedbox{
   border: none;
   border-radius: 4px;
   box-shadow: none;
+  overflow: hidden;
 }
 div.scroll {
   max-height: 285px;
-  overflow: scroll;
+  overflow: auto;
+  margin: 0px -300px 0px 0px;
+  padding-right: 300px;
 }
 
 div.comments {
@@ -440,9 +443,8 @@ div.img-blog{
 
 
  .intro-header {
+  background-attachment:fixed;
   background-color: #808080;
-  background: no-repeat center center;
-  background-attachment: scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;

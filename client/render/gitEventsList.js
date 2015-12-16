@@ -3,7 +3,9 @@ var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 
 var GitEventsList = React.createClass({
-
+  propTypes: {
+    data: React.PropTypes.array
+  },
   getInitialState: function(){
     return {
       showing: false,
@@ -59,7 +61,8 @@ var GitEventsList = React.createClass({
     })
 
     var repoButtons = repoNames.map(function(repo, showing){
-      var repoNamesRendered = (repo.charAt(9).toUpperCase() + repo.slice(10))
+      var replace = repo.split("/")
+      var repoNamesRendered = (replace[1].charAt(0).toUpperCase() + replace[1].slice(1))
       return (
               <a><h3 className="panel-header" onClick={that.toggle.bind(that, repo)}>
               <i className="fa fa-github"></i> {repoNamesRendered}</h3></a>
@@ -70,7 +73,7 @@ var GitEventsList = React.createClass({
     return (
       <div className="col-md-3">
         <div className="feedbox">
-          <h4>Github Repositories</h4>
+          <h4>Github Commits</h4>
           <div className="row scroll">
             <div className="col-lg-12">
 

@@ -3,10 +3,10 @@ var ReactDOM = require('react-dom');
 var CommentForm = require('./commentForm');
 var BlogHeader = require('./blogHeader')
 
-
-
 var BlogList = React.createClass({
-    
+  propTypes: {
+    data: React.PropTypes.array
+  },    
     getInitialState: function(){
         return {
           showing: false,

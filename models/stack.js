@@ -1,9 +1,9 @@
-var mongoose     = require('mongoose');
-var Schema       = mongoose.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var stackSchema = new Schema({
-  name:  String,
+  name: String,
   url: String
-  });
+});
 
 module.exports = mongoose.model('Stack', stackSchema);
