@@ -8,8 +8,7 @@ var ProjectList = React.createClass({
   render: function() {
 
     var projectSort = this.props.data.sort(function(a, b) {
-      var x = a.name.toLowerCase();
-      var y = b.name.toLowerCase();
+      var x = a.id, y = b.id;
       return x < y ? -1 : x > y ? 1 : 0;
     });
 
