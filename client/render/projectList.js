@@ -19,7 +19,7 @@ var ProjectList = React.createClass({
         <tbody>
         <tr>
         <td><a href={project.url} target="_blank"><h3 className="panel-header">{project.name}</h3></a>
-        <p>{project.description}</p>
+        <p key="projectDescription" dangerouslySetInnerHTML = {{__html: project.description}}></p>
         </td>
         </tr>
         </tbody>
