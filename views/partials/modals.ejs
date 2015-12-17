@@ -3,7 +3,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">You must be the blog ownerto post a blog!</h4>
+                    <h4 class="modal-title" id="myModalLabel">You must be the blog owner to post a blog!</h4>
                 </div>
                 <div class="modal-body">
                     <form action="/login" method="post">
@@ -38,6 +38,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="/login" method="post">
+                        <div class="user-stuff">
                         <div class="form-group">
                             <label>Email</label>
                             <input type="text" class="form-control" name="email">
@@ -48,9 +49,9 @@
                         </div>
 
                         <button type="submit" class="btn btn-block btn-social btn-local btn-md"><i class= "fa fa-sign-in"></i>Login</button>
-                        <button href="/auth/facebook" class="btn btn-block btn-social btn-facebook btn-md"><i class= "fa fa-facebook"></i>Facebook login</button>
-                        <button href="/auth/twitter" class="btn btn-block btn-social btn-twitter btn-md"><i class= "fa fa-twitter"></i>Twitter login</button>
-                        <button href="/auth/github" class="btn btn-block btn-social btn-github btn-md"><i class= "fa fa-github"></i>Github login</button>
+                        <a href="/auth/twitter" class="btn btn-block btn-social btn-twitter btn-md"><i class= "fa fa-twitter"></i>Twitter login</a>
+                        <a href="/auth/github" class="btn btn-block btn-social btn-github btn-md"><i class= "fa fa-github"></i>Github login</a>
+                    </div>
                     </form>      
 
                 </div>
@@ -65,10 +66,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Please login to comment.</h4>
+                    <h4 class="modal-title" id="myModalLabel">Please signup to comment.</h4>
                 </div>
                 <div class="modal-body">
                     <form action="/signup" method="post">
+                        <div class="user-stuff">
                         <div class="form-group">
                             <label>Email</label>
                             <input type="text" class="form-control" name="email">
@@ -79,10 +81,9 @@
                         </div>
 
                         <button type="submit" class="btn btn-block btn-social btn-local btn-md"><i class= "fa fa-sign-in"></i>Sign Up</button>
-                        <button href="/auth/facebook" class="btn btn-block btn-social btn-facebook btn-md"><i class= "fa fa-facebook"></i>
-                        Sign Up with Facebook</button>
-                        <button href="/auth/twitter" class="btn btn-block btn-social btn-twitter btn-md"><i class= "fa fa-twitter"></i>Sign up with Twitter</button>
-                        <button href="/auth/github" class="btn btn-block btn-social btn-github btn-md"><i class= "fa fa-github"></i>Sign Up with Github</button>
+                        <a href="/auth/twitter" class="btn btn-block btn-social btn-twitter btn-md"><i class= "fa fa-twitter"></i>Sign up with Twitter</a>
+                        <a href="/auth/github" class="btn btn-block btn-social btn-github btn-md"><i class= "fa fa-github"></i>Sign Up with Github</a>
+                    </div>
                     </form>                    
                 </div>
                 <div class="modal-footer">
