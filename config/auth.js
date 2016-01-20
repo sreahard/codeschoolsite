@@ -14,7 +14,7 @@ module.exports = {
 
     'githubAuth' : {
         'clientID'       : 'd4e40726689afe35e13d',
-        'clientSecret'    : '2bc32c469c5f4810bee357882c4a4ba8f77df2f2',
+        'clientSecret'    : '5111cbcd4e1cfcf033344c6c9c5dab2781e5984a',
         'callbackURL'       : 'http://reahard.rocks/auth/github/callback'
     }
 
