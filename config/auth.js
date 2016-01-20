@@ -7,14 +7,14 @@ module.exports = {
     },
 
     'twitterAuth' : {
-        'consumerKey'       : 'VI4mIGYb3sk6r5GiCwa8m3hrm',
-        'consumerSecret'    : 'm3weSnWU7l3nxUCdjmQtEpB10bbUNs3Sv6PJH2Klon4Rpdsmo2',
+        'consumerKey'       : 'TeSpTq0uf661OyBu6SaK3oY3f',
+        'consumerSecret'    : 'sscf2EWTzci9xukHaViFQDKQ0rdvuwV41tKyPTzefEFOTC1i1j',
         'callbackURL'       : 'http://reahard.rocks/auth/twitter/callback'
     },
 
     'githubAuth' : {
         'clientID'       : 'd4e40726689afe35e13d',
-        'clientSecret'    : '5111cbcd4e1cfcf033344c6c9c5dab2781e5984a',
+        'clientSecret'    : '5111cbcd4e1cfcf033344c6c9c5dab2781e5984a   ',
         'callbackURL'       : 'http://reahard.rocks/auth/github/callback'
     }
 
